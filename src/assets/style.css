@@ -1,0 +1,335 @@
+*{
+    overflow: hidden;
+}
+
+/*Home Page*/
+
+.navbar{
+    position: fixed;
+    width: 100%;
+}
+
+.navbar-item{
+    height: 3.75rem;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+
+
+}
+
+.navbar-brand>a:hover,a:active,a:visited,a:link{
+    color: black;
+}
+
+.navbar-item>p{
+    font-size: 25px;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-right: -8%;
+    font-family: 'Philosopher', sans-serif;
+
+}
+
+#home_Id{
+    background-color: lightgreen;
+}
+
+#home_Id:visited{
+    color: black;
+}
+
+.navbar-start a:hover{
+    color: darkgreen;
+}
+
+#home_hero_pic{
+    background-image: url('../assets/kandy_pic.jpg');
+    background-size: cover;
+    background-blend-mode: darken;
+
+}
+#hero-h1>p:nth-child(1){
+    font-weight: lighter;
+    font-size: 60px;
+    color: white;
+}
+
+#hero-h1>p:nth-child(2){
+    font-weight: bold;
+    font-size: 60px;
+    color: white;
+}
+
+#hero-p{
+    color: white;
+    font-size: 19px;
+}
+
+.button{
+    border-radius: 15px;
+    margin-right: 5px;
+}
+
+.orWord{
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+#title1,#title2,#title3,#title4{
+    text-align: center;
+}
+
+#subtitle1,#subtitle2,#subtitle3,#subtitle4{
+    text-align: center;
+}
+
+#section2{
+    background-color: whitesmoke;
+
+}
+#latestTender{
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    color: darkgreen;
+    margin-bottom: 30px;
+}
+
+.card-header{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 70px;
+    width: 100%;
+}
+
+/*Signup*/
+#createAccountColumn{
+    padding-left: 0;
+    padding-bottom: 5%;
+}
+#createAccountText{
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+
+}
+#signup_background{
+    background-color: lightgray;
+}
+
+#signup_container{
+    margin-top: 5%;
+    padding: 0;
+}
+
+#signup_right_side{
+    background: linear-gradient(180deg, #34AFA8 6.25%, rgba(13, 188, 178, 0.35) 100%);
+}
+
+.column #round_1{
+    position: absolute;
+    top: 20%;
+    left: 53%;
+    width: 500px;
+    height: 500px;
+    border-radius: 100%;
+
+    background: linear-gradient(180deg, rgba(56, 178, 170, 0.5) 0%, rgba(39, 189, 171, 0) 100%);
+}
+
+.column #round_2{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 400px;
+    height: 400px;
+    border-radius: 100%;
+
+    background: linear-gradient(180deg, rgba(56, 178, 170, 0.5) 0%, rgba(39, 189, 171, 0) 100%);
+}
+
+#signup_pic{
+    width: 80%;
+    height: 90%;
+    margin-left: 10%;
+}
+
+#signup_button{
+    /*margin: 0 0 0 30%;*/
+    font-weight: bold;
+}
+
+#alreadyText{
+    padding-top: 0;
+}
+
+/*Signin*/
+#signin_round_1{
+    position: absolute;
+    top: 5%;
+    left: 51%;
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
+
+    background: linear-gradient(180deg, rgba(56, 178, 170, 0.5) 0%, rgba(39, 189, 171, 0) 100%);
+}
+
+#signin_round_2{
+    position: absolute;
+    top: 11%;
+    left: 12%;
+    width: 270px;
+    height: 270px;
+    border-radius: 100%;
+
+
+    background: linear-gradient(180deg, rgba(56, 178, 170, 0.5) 0%, rgba(39, 189, 171, 0) 100%);
+}
+
+/*About*/
+#about_hero_pic{
+    background-image: url('../assets/about.jpg');
+    background-size: cover;
+    background-blend-mode: darken;
+
+}
+
+#about-hero-h1{
+    font-weight: bold;
+    font-size: 55px;
+    color: white;
+}
+
+
+/*Footer*/
+#footer_name{
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+
+}
+
+#footer{
+    padding-bottom: 50px;
+
+}
+
+.footer_icon{
+    color: white;
+}
+
+.footer_icon:hover{
+    color: cornflowerblue;
+}
+
+.footer_link:hover{
+    color: darkgreen;
+}
+
+
+@media(min-width: 1440px)  {
+    /*Signup*/
+    .column #round_1{
+        position: absolute;
+        top: 20%;
+        left: 56%;
+        width: 500px;
+        height: 500px;
+        border-radius: 100%;
+
+        background: linear-gradient(180deg, rgba(56, 178, 170, 0.5) 0%, rgba(39, 189, 171, 0) 100%);
+    }
+
+    /*Signin*/
+    #signin_round_1{
+        position: absolute;
+        top: 5%;
+        left: 53%;
+        width: 350px;
+        height: 350px;
+        border-radius: 100%;
+
+        background: linear-gradient(180deg, rgba(56, 178, 170, 0.5) 0%, rgba(39, 189, 171, 0) 100%);
+    }
+
+
+}
+
+@media(max-width: 1024px)  {
+    /*Signup*/
+    .column #round_1{
+        position: absolute;
+        top: 20%;
+        left: 53%;
+        width: 400px;
+        height: 400px;
+        border-radius: 100%;
+
+        background: linear-gradient(180deg, rgba(56, 178, 170, 0.5) 0%, rgba(39, 189, 171, 0) 100%);
+    }
+
+    .column #round_2{
+        position: absolute;
+        top: 13%;
+        left: 12%;
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+
+        background: linear-gradient(180deg, rgba(56, 178, 170, 0.5) 0%, rgba(39, 189, 171, 0) 100%);
+    }
+
+    /*Signin*/
+    #signin_round_1{
+        position: absolute;
+        top: 20%;
+        left: 51.5%;
+        width: 250px;
+        height: 250px;
+        border-radius: 100%;
+
+        background: linear-gradient(180deg, rgba(56, 178, 170, 0.5) 0%, rgba(39, 189, 171, 0) 100%);
+    }
+
+    #signin_round_2{
+        position: absolute;
+        top: 9%;
+        left: 10%;
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+
+        background: linear-gradient(180deg, rgba(56, 178, 170, 0.5) 0%, rgba(39, 189, 171, 0) 100%);
+    }
+
+
+}
+
+@media(max-width: 768px){
+    /*Home*/
+
+    /*SignUp*/
+    #signup_container{
+        margin-top: 8%;
+    }
+
+    #signup_right_side{
+        display: none;
+    }
+
+}
+
+@media(max-width: 425px) {
+
+    /*Signin*/
+    #signin_container{
+        margin-top: 10%;
+    }
+
+}
+
+
