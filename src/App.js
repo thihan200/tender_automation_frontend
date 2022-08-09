@@ -9,6 +9,7 @@ import Signin from "./pages/signin";
 import Home from "./pages/home";
 import Signup from "./pages/signup";
 import About from "./pages/about";
+import CreateTender from './pages/createTender';
 import Loading from "./component/loading";
 
 
@@ -40,9 +41,10 @@ function App() {
             <Route path="/sign-in" element={<Signin/>}/>
             <Route path="/sign-up" element={<Signup/>}/>
             <Route path="/about-us" element={<About/>}/>
+            <Route path="/create-tender" element={<CreateTender/>}/>
 
 
-          }
+          
       </Routes>
     </>
   );
