@@ -39,18 +39,18 @@ function Signin() {
                                 Home
                             </Link>
 
-                            <a className="navbar-item">
+                            <Link className="navbar-item" to="/tender">
                                 Tenders
-                            </a>
+                            </Link>
 
                             <Link className="navbar-item" to="/about-us">
                                 About Us
                             </Link>
 
 
-                            <a className="navbar-item">
+                            <Link className="navbar-item" to="/contact">
                                 Contact
-                            </a>
+                            </Link>
                         </div>
 
                         <div className="navbar-item">
@@ -191,7 +191,7 @@ function Signin() {
                             </li>
 
                             <li className="pt-2">
-                                <a className="has-text-white mt-3" href="/tenders">
+                                <a className="has-text-white mt-3" href="/tender">
                                     <span className="footer_link">Tenders</span>
                                 </a>
                             </li>

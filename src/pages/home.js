@@ -1,5 +1,9 @@
 import navbarImage from '../assets/full_logo.png';
 import {Link} from "react-router-dom";
+import spmcLogo from '../assets/SPMC.png';
+import masLogo from '../assets/MAS.png';
+import waterLogo from '../assets/Water_Board.png';
+import milkoLogo from '../assets/Milco.png';
 import facebookIcon from '../assets/facebook_icon.png';
 
 function Home() {
@@ -32,17 +36,17 @@ function Home() {
                             Home
                         </Link>
 
-                        <a className="navbar-item">
+                        <Link className="navbar-item" to="/tender">
                             Tenders
-                        </a>
+                        </Link>
 
                         <Link className="navbar-item" to="/about-us">
                             About Us
                         </Link>
 
-                        <a className="navbar-item">
+                        <Link className="navbar-item" to="/contact">
                             Contact
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="navbar-item">
@@ -121,17 +125,22 @@ function Home() {
                             </header>
                             <div className="card-content">
                                 <div className="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis
-                                    mauris.
-                                    <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                                    <br/>
-                                        <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                                    <p id="card_category">Electrical and Electronic</p>
+                                    <div className="icon-text">
+                                          <span className="icon has-text-black">
+                                            <i className="fa-solid fa-location-dot"></i>
+                                          </span>
+                                         <span>Western Province</span>
+                                    </div>
+                                    <p><strong>Tender Value</strong>: N/A</p>
+
+                                   <p id="card_desc"><strong>Source</strong>: (Sign into view)</p>
+                                    <p id="card_desc"><strong>Published On</strong>: (Sign into view)</p>
+                                    <p id="card_desc"><strong>Closing</strong>: 20 August 2022</p>
                                 </div>
                             </div>
-                            <footer className="card-footer">
-                                <a href="#" className="card-footer-item">Save</a>
-                                <a href="#" className="card-footer-item">Edit</a>
-                                <a href="#" className="card-footer-item">Delete</a>
+                            <footer className="card-footer has-background-primary-dark ">
+                                <a href="#" className="card-footer-item has-text-white has-text-weight-bold">7 Days Remaining</a>
                             </footer>
                         </div>
                     </div>
@@ -139,22 +148,27 @@ function Home() {
                         <div className="card">
                             <header className="card-header">
                                 <p className="card-header-title">
-                                    AMMENDMEND OF INSURANCE POLICY TO COVER THE MAIN HOSPITAL AND THE SE
+                                    REPAIR OF DESCKTOP MACHINE AT KDU CARE-KDU/PRO/RP&SERVICE/137/2022
                                 </p>
                             </header>
                             <div className="card-content">
                                 <div className="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis
-                                    mauris.
-                                    <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                                    <br/>
-                                    <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                                    <p id="card_category">Computer and IT</p>
+                                    <div className="icon-text">
+                                          <span className="icon has-text-black">
+                                            <i className="fa-solid fa-location-dot"></i>
+                                          </span>
+                                        <span>Western Province</span>
+                                    </div>
+                                    <p><strong>Tender Value</strong>: N/A</p>
+
+                                    <p id="card_desc"><strong>Source</strong>: (Sign into view)</p>
+                                    <p id="card_desc"><strong>Published On</strong>: (Sign into view)</p>
+                                    <p id="card_desc"><strong>Closing</strong>: 25 August 2022</p>
                                 </div>
                             </div>
-                            <footer className="card-footer">
-                                <a href="#" className="card-footer-item">Save</a>
-                                <a href="#" className="card-footer-item">Edit</a>
-                                <a href="#" className="card-footer-item">Delete</a>
+                            <footer className="card-footer has-background-primary-dark ">
+                                <a href="#" className="card-footer-item has-text-white has-text-weight-bold">12 Days Remaining</a>
                             </footer>
                         </div>
                     </div>
@@ -162,22 +176,27 @@ function Home() {
                         <div className="card">
                             <header className="card-header">
                                 <p className="card-header-title">
-                                    PURCHASE OF LAB EQUIPMENTS FOR DEPT. OF ELECTRICAL, ELECTRONIC & TELECOMMUNICATION
+                                    PURCHASE OF LAB TOOLS FOR FOT-KDU/PRO/CAP/153/2022
                                 </p>
                             </header>
                             <div className="card-content">
                                 <div className="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis
-                                    mauris.
-                                    <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                                    <br/>
-                                    <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                                    <p id="card_category">Chemical Products</p>
+                                    <div className="icon-text">
+                                          <span className="icon has-text-black">
+                                            <i className="fa-solid fa-location-dot"></i>
+                                          </span>
+                                        <span>Western Province</span>
+                                    </div>
+                                    <p><strong>Tender Value</strong>: N/A</p>
+
+                                    <p id="card_desc"><strong>Source</strong>: (Sign into view)</p>
+                                    <p id="card_desc"><strong>Published On</strong>: (Sign into view)</p>
+                                    <p id="card_desc"><strong>Closing</strong>: 27 August 2022</p>
                                 </div>
                             </div>
-                            <footer className="card-footer">
-                                <a href="#" className="card-footer-item">Save</a>
-                                <a href="#" className="card-footer-item">Edit</a>
-                                <a href="#" className="card-footer-item">Delete</a>
+                            <footer className="card-footer has-background-primary-dark ">
+                                <a href="#" className="card-footer-item has-text-white has-text-weight-bold">15 Days Remaining</a>
                             </footer>
                         </div>
                     </div>
@@ -185,28 +204,65 @@ function Home() {
                         <div className="card">
                             <header className="card-header">
                                 <p className="card-header-title">
-                                    PURCHASE OF LAB EQUIPMENTS FOR DEPT. OF ELECTRICAL, ELECTRONIC & TELECOMMUNICATION
+                                    Boat Service Between Jetty at Lakvijaya Power Plant & Coal Vessels at Puttalam
                                 </p>
                             </header>
                             <div className="card-content">
                                 <div className="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis
-                                    mauris.
-                                    <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                                    <br/>
-                                    <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                                    <p id="card_category">Transport</p>
+                                    <div className="icon-text">
+                                          <span className="icon has-text-black">
+                                            <i className="fa-solid fa-location-dot"></i>
+                                          </span>
+                                        <span>Western Province</span>
+                                    </div>
+                                    <p><strong>Tender Value</strong>: N/A</p>
+
+                                    <p id="card_desc"><strong>Source</strong>: (Sign into view)</p>
+                                    <p id="card_desc"><strong>Published On</strong>: (Sign into view)</p>
+                                    <p id="card_desc"><strong>Closing</strong>: 31 August 2022</p>
                                 </div>
                             </div>
-                            <footer className="card-footer">
-                                <a href="#" className="card-footer-item">Save</a>
-                                <a href="#" className="card-footer-item">Edit</a>
-                                <a href="#" className="card-footer-item">Delete</a>
+                            <footer className="card-footer has-background-primary-dark ">
+                                <a href="#" className="card-footer-item has-text-white has-text-weight-bold">17 Days Remaining</a>
                             </footer>
                         </div>
                     </div>
                 </div>
             </section>
         {/*Start Section 2*/}
+         
+         {/*Start Section 3*/}
+         <section className="section">
+             <h1 id="latestTender">Our Partners</h1>
+             <div className="columns has-text-centered">
+                 <div className="column">
+                     <div className="is-align-items-center">
+                         <img src={spmcLogo}/>
+                     </div>
+                     <p><strong>State Pharmaceuticals Manufacturing Corporation</strong></p>
+                 </div>
+                 <div className="column">
+                     <div className="is-align-items-center">
+                         <img src={masLogo}/>
+                     </div>
+                     <p><strong>MAS Holding (Pvt) Ltd</strong></p>
+                 </div>
+                 <div className="column">
+                     <div className="is-align-items-center">
+                         <img src={waterLogo}/>
+                     </div>
+                     <p><strong>National Water Supply and Drainage Board</strong></p>
+                 </div>
+                 <div className="column">
+                     <div className="is-align-items-center">
+                         <img src={milkoLogo}/>
+                     </div>
+                     <p><strong>Milko (Pvt) Ltd</strong></p>
+                 </div>
+             </div>
+         </section>
+         {/*End Section 3*/}
 
 
        {/*Start Footer */}
@@ -272,7 +328,7 @@ function Home() {
                                 </li>
 
                                 <li className="pt-2">
-                                    <a className="has-text-white mt-3" href="/tenders">
+                                    <a className="has-text-white mt-3" href="/tender">
                                         <span className="footer_link">Tenders</span>
                                     </a>
                                 </li>

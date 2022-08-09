@@ -1,6 +1,6 @@
 function CreateTender() {
     return (
-        <form onSubmit={(e) => submitFOrm(e)}>
+        <form>
         
             <div class="container is-max-desktop">
                 <div class="notification">
@@ -11,7 +11,7 @@ function CreateTender() {
                         type="text"
                         placeholder="Enter the Title"
                         onChange={(e) => {
-                            setCompanyName(e.target.value)
+                            // setCompanyName(e.target.value)
                         }}
                     >
                     </input>

@@ -10,6 +10,8 @@ import Home from "./pages/home";
 import Signup from "./pages/signup";
 import About from "./pages/about";
 import CreateTender from './pages/createTender';
+import Contact from './pages/contact';
+import Tender from './pages/tender'
 import Loading from "./component/loading";
 
 
@@ -42,6 +44,8 @@ function App() {
             <Route path="/sign-up" element={<Signup/>}/>
             <Route path="/about-us" element={<About/>}/>
             <Route path="/create-tender" element={<CreateTender/>}/>
+          <Route path="/contact" element={<Contact/>}/>
+          <Route path="/tender" element={<Tender/>}/>
 
 
           
