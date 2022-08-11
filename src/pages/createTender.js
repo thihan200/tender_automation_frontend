@@ -1,7 +1,7 @@
 function CreateTender() {
     return (
         <form>
-        
+
             <div class="container is-max-desktop">
                 <div class="notification">
                     <b>Title:</b>
@@ -127,12 +127,8 @@ function CreateTender() {
                 <div class="buttons">
                     <button class="button is-primary">Post My Add</button>
                 </div>
-
-
             </div>
-
-
-        </form >
+        </form>
 
 
     );
