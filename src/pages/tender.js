@@ -1,5 +1,6 @@
 import navbarImage from "../assets/full_logo.png";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import Footer from "../component/footer.jsx";
 
 function Tender() {
     return (
@@ -12,12 +13,12 @@ function Tender() {
             <nav className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
                     <a className="navbar-item" href="/">
-                        <img src={navbarImage} alt="logo pic" width="35px" height="10px"/>
+                        <img src={navbarImage} alt="logo pic" width="35px" height="10px" />
                         <p>EzTends.lk</p>
                     </a>
 
                     <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false"
-                       data-target="navbarBasicExample">
+                        data-target="navbarBasicExample">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -82,10 +83,10 @@ function Tender() {
                                 <div className="column is-three-quarters">
                                     <div className="panel-block">
                                         <p className="control has-icons-left">
-                                            <input className="input is-success" type="text" placeholder="Search"/>
+                                            <input className="input is-success" type="text" placeholder="Search" />
                                             <span className="icon is-left">
                                                 <i className="fas fa-search" aria-hidden="true"></i>
-                                             </span>
+                                            </span>
                                         </p>
                                     </div>
                                 </div>
@@ -158,7 +159,7 @@ function Tender() {
                         </div>
                         <div className="column is-four-fifths">
                             <label className="label">Closing Date</label>
-                                <input className="input" type="date"/>
+                            <input className="input" type="date" />
 
 
                         </div>
@@ -171,7 +172,7 @@ function Tender() {
                     <div className="column pl-5">
                         <div className="tabs is-medium">
                             <ul>
-                                <li onClick={(e)=>{console.log("This is Live")}} className="is-active" data-target="latestTender1"><a>Live(7)</a></li>
+                                <li onClick={(e) => { console.log("This is Live") }} className="is-active" data-target="latestTender1"><a>Live(7)</a></li>
                                 <li data-target="latestTender1"><a>Latest(24)</a></li>
                                 <li><a>Expired(145)</a></li>
                             </ul>
@@ -184,31 +185,31 @@ function Tender() {
 
                         <div id="tab-content">
                             <a href="#">
-                            <div className="card has-background-light" id="latestTender1">
-                                <header className="card-header">
-                                    <p className="card-header-title">
-                                        PURCHASE OF LAB EQUIPMENTS FOR DEPT. OF ELECTRICAL, ELECTRONIC &
-                                        TELECOMMUNICATION
-                                    </p>
-                                </header>
-                                <div className="card-content">
-                                    <p className="is-size-6" id="card_category">Electrical and Electronic</p>
-                                    <p className="is-size-7">(Sign into view)</p>
-                                    <div className="icon-text pt-3 is-size-6">
-                                          <span className="icon has-text-primary ">
-                                            <i className="fa-solid fa-location-dot "></i>
-                                          </span>
-                                          <span>Western Province</span>
-                                        <span className="ml-6"><strong>Ref: </strong>T001</span>
-                                        <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
+                                <div className="card has-background-light" id="latestTender1">
+                                    <header className="card-header">
+                                        <p className="card-header-title">
+                                            PURCHASE OF LAB EQUIPMENTS FOR DEPT. OF ELECTRICAL, ELECTRONIC &
+                                            TELECOMMUNICATION
+                                        </p>
+                                    </header>
+                                    <div className="card-content">
+                                        <p className="is-size-6" id="card_category">Electrical and Electronic</p>
+                                        <p className="is-size-7">(Sign into view)</p>
+                                        <div className="icon-text pt-3 is-size-6">
+                                            <span className="icon has-text-primary ">
+                                                <i className="fa-solid fa-location-dot "></i>
+                                            </span>
+                                            <span>Western Province</span>
+                                            <span className="ml-6"><strong>Ref: </strong>T001</span>
+                                            <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
+                                        </div>
                                     </div>
+                                    <footer className="card-footer">
+                                        <p className="card-footer-item"><strong>Published On :&nbsp;</strong>(Sign into view)</p>
+                                        <p className="card-footer-item"><strong>Closed On : &nbsp;</strong>20 August 2022</p>
+                                        <p className="card-footer-item has-background-primary has-text-white has-text-weight-bold">7 Days Remaining</p>
+                                    </footer>
                                 </div>
-                                <footer className="card-footer">
-                                    <p className="card-footer-item"><strong>Published On :&nbsp;</strong>(Sign into view)</p>
-                                    <p className="card-footer-item"><strong>Closed On : &nbsp;</strong>20 August 2022</p>
-                                    <p className="card-footer-item has-background-primary has-text-white has-text-weight-bold">7 Days Remaining</p>
-                                </footer>
-                            </div>
                             </a>
 
                             <a href="#">
@@ -222,9 +223,9 @@ function Tender() {
                                         <p className="is-size-6" id="card_category">Computer and IT</p>
                                         <p className="is-size-7">(Sign into view)</p>
                                         <div className="icon-text pt-3 is-size-6">
-                                          <span className="icon has-text-primary ">
-                                            <i className="fa-solid fa-location-dot "></i>
-                                          </span>
+                                            <span className="icon has-text-primary ">
+                                                <i className="fa-solid fa-location-dot "></i>
+                                            </span>
                                             <span>Western Province</span>
                                             <span className="ml-6"><strong>Ref: </strong>T002</span>
                                             <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
@@ -249,9 +250,9 @@ function Tender() {
                                         <p className="is-size-6" id="card_category">Chemical Products</p>
                                         <p className="is-size-7">(Sign into view)</p>
                                         <div className="icon-text pt-3 is-size-6">
-                                          <span className="icon has-text-primary ">
-                                            <i className="fa-solid fa-location-dot "></i>
-                                          </span>
+                                            <span className="icon has-text-primary ">
+                                                <i className="fa-solid fa-location-dot "></i>
+                                            </span>
                                             <span>Western Province</span>
                                             <span className="ml-6"><strong>Ref: </strong>T003</span>
                                             <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
@@ -276,9 +277,9 @@ function Tender() {
                                         <p className="is-size-6" id="card_category">Transport</p>
                                         <p className="is-size-7">(Sign into view)</p>
                                         <div className="icon-text pt-3 is-size-6">
-                                          <span className="icon has-text-primary ">
-                                            <i className="fa-solid fa-location-dot "></i>
-                                          </span>
+                                            <span className="icon has-text-primary ">
+                                                <i className="fa-solid fa-location-dot "></i>
+                                            </span>
                                             <span>Western Province</span>
                                             <span className="ml-6"><strong>Ref: </strong>T004</span>
                                             <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
@@ -303,9 +304,9 @@ function Tender() {
                                         <p className="is-size-6" id="card_category">Other Stationery Items, Training and Testing Equipmen</p>
                                         <p className="is-size-7">(Sign into view)</p>
                                         <div className="icon-text pt-3 is-size-6">
-                                          <span className="icon has-text-primary ">
-                                            <i className="fa-solid fa-location-dot "></i>
-                                          </span>
+                                            <span className="icon has-text-primary ">
+                                                <i className="fa-solid fa-location-dot "></i>
+                                            </span>
                                             <span>Western Province</span>
                                             <span className="ml-6"><strong>Ref: </strong>T005</span>
                                             <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
@@ -327,97 +328,7 @@ function Tender() {
             {/* End Section 2*/}
 
             {/*Start Footer */}
-            <footer className="footer has-background-grey" id="footer">
-                <div className="columns">
-                    <div className="column is-two-thirds">
-                        <div className="navbar-brand container">
-                            <a href="/">
-                                <p className="has-text-light" id="footer_name">EzTends.lk</p>
-                            </a>
-                        </div>
-                        <hr className="mt-0"/>
-                        <p className="is-size-6 has-text-light has-text-weight-medium">EzTends.lk is the most effective online tender marketplace in Sri Lanka</p>
-                        <div className="field mt-3 has-text-white">
-                                <span className="icon-text">
-                                  <span className="icon">
-                                    <i className="fas fa-home"></i>
-                                  </span>
-                                  <span>No. 571/17, Galle Road, Colombo 6.</span>
-                                </span>
-                        </div>
-                        <div className="field has-text-white">
-                                <span className="icon-text">
-                                  <span className="icon">
-                                    <i className="fa-solid fa-phone"></i>
-                                  </span>
-                                  <span>+94 77 719 6703</span>
-                                </span>
-                        </div>
-                        <div className="field has-text-white">
-                                <span className="icon-text">
-                                  <span className="icon">
-                                   <i className="fa-solid fa-envelope"></i>
-                                  </span>
-                                  <span>info@eztends.lk</span>
-                                </span>
-                        </div>
-                    </div>
-
-                    <div className="column ">
-                        <div className="navbar-brand container is-justify-content-center">
-                            <a href="https://www.facebook.com/" target="_blank">
-                                   <span>
-                                     <i className="fa-brands fa-facebook-square fa-3x footer_icon"></i>
-                                  </span>
-                            </a>
-                            <a href="https://twitter.com/" target="_blank" className="ml-5">
-                                   <span>
-                                     <i className="fa-brands fa-twitter-square fa-3x footer_icon"></i>
-                                  </span>
-                            </a>
-                            <a href="https://www.linkedin.com/" target="_blank" className="ml-5">
-                                   <span>
-                                    <i className="fa-brands fa-linkedin fa-3x footer_icon"></i>
-                                  </span>
-                            </a>
-                        </div>
-                        <ul className="container mt-3 has-text-centered has-text-white">
-                            <li>
-                                <a className="has-text-white" href="/">
-                                    <span className="footer_link">Home</span>
-                                </a>
-                            </li>
-
-                            <li className="pt-2">
-                                <a className="has-text-white mt-3" href="/tender">
-                                    <span className="footer_link">Tenders</span>
-                                </a>
-                            </li>
-
-                            <li className="pt-2">
-                                <a className="has-text-white" href="/about-us">
-                                    <span className="footer_link">About Us</span>
-                                </a>
-                            </li>
-
-                            <li className="pt-2">
-                                <a className="has-text-white" href="/contact">
-                                    <span className="footer_link">Contact</span>
-                                </a>
-                            </li>
-
-                        </ul>
-
-
-                    </div>
-                </div>
-                <div className="content has-text-centered">
-                    <p className="has-text-white">
-                        <strong className="has-text-white">All Rights Reserved.</strong> Copyrights © 2022 - EzTends.lk
-                    </p>
-                </div>
-            </footer>
-
+            <Footer />
             {/*End Footer */}
         </>
     );

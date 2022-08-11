@@ -1,8 +1,10 @@
 import navbarImage from "../assets/full_logo.png";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import Footer from "../component/footer.jsx";
 
 function Contact() {
-    return(
+    return (
         <>
             {/* Page Loading Start*/}
 
@@ -12,12 +14,12 @@ function Contact() {
             <nav className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
                     <a className="navbar-item" href="/">
-                        <img src={navbarImage} alt="logo pic" width="35px" height="10px"/>
+                        <img src={navbarImage} alt="logo pic" width="35px" height="10px" />
                         <p>EzTends.lk</p>
                     </a>
 
                     <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false"
-                       data-target="navbarBasicExample">
+                        data-target="navbarBasicExample">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -35,7 +37,7 @@ function Contact() {
                                 Tenders
                             </Link>
 
-                            <Link className="navbar-item"  to="/about-us">
+                            <Link className="navbar-item" to="/about-us">
                                 About Us
                             </Link>
 
@@ -78,17 +80,17 @@ function Contact() {
                             <h1 className="title" id="contactNow">Contact Now</h1>
                             <div className="field">
                                 <div className="control">
-                                    <input className="input" type="name" placeholder="Name"/>
+                                    <input className="input" type="name" placeholder="Name" />
                                 </div>
                             </div>
                             <div className="field">
                                 <div className="control">
-                                    <input className="input" type="email" placeholder="Email"/>
+                                    <input className="input" type="email" placeholder="Email" />
                                 </div>
                             </div>
                             <div className="field">
                                 <div className="control">
-                                    <input className="input" type="number" placeholder="Phone No"/>
+                                    <input className="input" type="number" placeholder="Phone No" />
                                 </div>
                             </div>
                             <div className="field">
@@ -106,9 +108,9 @@ function Contact() {
                     </div>
                     <div className="column ml-3">
                         <div className="icon-text mt-6 pt-4">
-                              <span className="icon has-text-success">
+                            <span className="icon has-text-success">
                                 <i className="fa-solid fa-location-dot"></i>
-                              </span>
+                            </span>
                             <span>Address</span>
                         </div>
 
@@ -117,9 +119,9 @@ function Contact() {
                         </p>
 
                         <div className="icon-text pt-3">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-tty"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-tty"></i>
+                            </span>
                             <span>Telephone</span>
                         </div>
 
@@ -128,9 +130,9 @@ function Contact() {
                         </p>
 
                         <div className="icon-text pt-3">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-phone"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-phone"></i>
+                            </span>
                             <span>Mobile</span>
                         </div>
 
@@ -139,9 +141,9 @@ function Contact() {
                         </p>
 
                         <div className="icon-text pt-3">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-envelope"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-envelope"></i>
+                            </span>
                             <span>Email</span>
                         </div>
 
@@ -151,7 +153,7 @@ function Contact() {
                     </div>
                 </div>
             </section>
-           {/* End Section 1*/}
+            {/* End Section 1*/}
 
             {/*Start Section 2 */}
             <section className="section">
@@ -163,9 +165,9 @@ function Contact() {
                         </h2>
                         <p>Project Manager</p>
                         <div className="icon-text pt-5">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-tty"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-tty"></i>
+                            </span>
                             <span>Telephone</span>
                         </div>
 
@@ -174,9 +176,9 @@ function Contact() {
                         </p>
 
                         <div className="icon-text pt-2">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-phone"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-phone"></i>
+                            </span>
                             <span>Mobile</span>
                         </div>
 
@@ -185,9 +187,9 @@ function Contact() {
                         </p>
 
                         <div className="icon-text pt-2">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-envelope"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-envelope"></i>
+                            </span>
                             <span>Email</span>
                         </div>
 
@@ -201,9 +203,9 @@ function Contact() {
                         </h2>
                         <p>Co Founder</p>
                         <div className="icon-text pt-5">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-tty"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-tty"></i>
+                            </span>
                             <span>Telephone</span>
                         </div>
 
@@ -212,9 +214,9 @@ function Contact() {
                         </p>
 
                         <div className="icon-text pt-2">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-phone"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-phone"></i>
+                            </span>
                             <span>Mobile</span>
                         </div>
 
@@ -223,9 +225,9 @@ function Contact() {
                         </p>
 
                         <div className="icon-text pt-2">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-envelope"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-envelope"></i>
+                            </span>
                             <span>Email</span>
                         </div>
 
@@ -235,13 +237,13 @@ function Contact() {
                     </div>
                     <div className="column">
                         <h2 className="subtitle mb-1 has-text-weight-bold">
-                           Dulaj Nawodya
+                            Dulaj Nawodya
                         </h2>
                         <p>Assistant Manager</p>
                         <div className="icon-text pt-5">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-tty"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-tty"></i>
+                            </span>
                             <span>Telephone</span>
                         </div>
 
@@ -250,9 +252,9 @@ function Contact() {
                         </p>
 
                         <div className="icon-text pt-2">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-phone"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-phone"></i>
+                            </span>
                             <span>Mobile</span>
                         </div>
 
@@ -261,9 +263,9 @@ function Contact() {
                         </p>
 
                         <div className="icon-text pt-2">
-                              <span className="icon has-text-success">
-                               <i className="fas fa-envelope"></i>
-                              </span>
+                            <span className="icon has-text-success">
+                                <i className="fas fa-envelope"></i>
+                            </span>
                             <span>Email</span>
                         </div>
 
@@ -277,96 +279,7 @@ function Contact() {
             {/*End Section 2*/}
 
             {/*Start Footer */}
-            <footer className="footer has-background-grey" id="footer">
-                <div className="columns">
-                    <div className="column is-two-thirds">
-                        <div className="navbar-brand container">
-                            <a href="/">
-                                <p className="has-text-light" id="footer_name">EzTends.lk</p>
-                            </a>
-                        </div>
-                        <hr className="mt-0"/>
-                        <p className="is-size-6 has-text-light has-text-weight-medium">EzTends.lk is the most effective online tender marketplace in Sri Lanka</p>
-                        <div className="field mt-3 has-text-white">
-                                <span className="icon-text">
-                                  <span className="icon">
-                                    <i className="fas fa-home"></i>
-                                  </span>
-                                  <span>No. 571/17, Galle Road, Colombo 6.</span>
-                                </span>
-                        </div>
-                        <div className="field has-text-white">
-                                <span className="icon-text">
-                                  <span className="icon">
-                                    <i className="fa-solid fa-phone"></i>
-                                  </span>
-                                  <span>+94 77 719 6703</span>
-                                </span>
-                        </div>
-                        <div className="field has-text-white">
-                                <span className="icon-text">
-                                  <span className="icon">
-                                   <i className="fa-solid fa-envelope"></i>
-                                  </span>
-                                  <span>info@eztends.lk</span>
-                                </span>
-                        </div>
-                    </div>
-
-                    <div className="column ">
-                        <div className="navbar-brand container is-justify-content-center">
-                            <a href="https://www.facebook.com/" target="_blank">
-                                   <span>
-                                     <i className="fa-brands fa-facebook-square fa-3x footer_icon"></i>
-                                  </span>
-                            </a>
-                            <a href="https://twitter.com/" target="_blank" className="ml-5">
-                                   <span>
-                                     <i className="fa-brands fa-twitter-square fa-3x footer_icon"></i>
-                                  </span>
-                            </a>
-                            <a href="https://www.linkedin.com/" target="_blank" className="ml-5">
-                                   <span>
-                                    <i className="fa-brands fa-linkedin fa-3x footer_icon"></i>
-                                  </span>
-                            </a>
-                        </div>
-                        <ul className="container mt-3 has-text-centered has-text-white">
-                            <li>
-                                <a className="has-text-white" href="/">
-                                    <span className="footer_link">Home</span>
-                                </a>
-                            </li>
-
-                            <li className="pt-2">
-                                <a className="has-text-white mt-3" href="/tender">
-                                    <span className="footer_link">Tenders</span>
-                                </a>
-                            </li>
-
-                            <li className="pt-2">
-                                <a className="has-text-white" href="/about-us">
-                                    <span className="footer_link">About Us</span>
-                                </a>
-                            </li>
-
-                            <li className="pt-2">
-                                <a className="has-text-white" href="/contact">
-                                    <span className="footer_link">Contact</span>
-                                </a>
-                            </li>
-
-                        </ul>
-
-
-                    </div>
-                </div>
-                <div className="content has-text-centered">
-                    <p className="has-text-white">
-                        <strong className="has-text-white">All Rights Reserved.</strong> Copyrights © 2022 - EzTends.lk
-                    </p>
-                </div>
-            </footer>
+            <Footer />
 
             {/*End Footer */}
 

@@ -1,20 +1,109 @@
 import navbarImage from "../assets/full_logo.png";
 import signup_image from "../assets/sign_up.svg";
-import {Link} from "react-router-dom";
-import {useState} from "react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Swal from 'sweetalert2'
+import validator from 'validator';
+
+import Footer from "../component/footer.jsx";
 
 function Signup() {
-    const [uemail,Setuemail]=useState("");
-    const [fullName,SetfullName]=useState("");
-    const [password,Setpassword]=useState("");
-    const [companyName,SetCompanyName]=useState("");
-    const [ownerName,SetownerName]=useState("");
-    const [companyAddress,SetcompanyAddress]=useState("");
-    const [companyUrl,SetcompanyUrl]=useState("");
-    const [telNo,SettelNo]=useState("");
-    const [atype,Setatype]=useState("");
-    const [interests,Setinterests]=useState("");
-    const [province,Setprovince]=useState("");
+    const [uemail, Setuemail] = useState("");
+    const [fullName, SetfullName] = useState("");
+    const [password, Setpassword] = useState("");
+    const [confirmPassword, SetconfirmPassword] = useState("");
+    const [companyName, SetCompanyName] = useState("");
+    const [ownerName, SetownerName] = useState("");
+    const [companyAddress, SetcompanyAddress] = useState("");
+    const [companyUrl, SetcompanyUrl] = useState("");
+    const [telNo, SettelNo] = useState("");
+    const [atype, Setatype] = useState("");
+    const [interests, Setinterests] = useState("");
+    const [province, Setprovince] = useState("");
+
+    const [isEmailValid, SetisEmailValid] = useState(false);
+    useEffect(() => {
+    }, []);
+
+    useEffect(() => {
+        console.log(uemail);
+        if (uemail.length === 0) {
+            SetisEmailValid(false);
+            return;
+        }
+        if (validator.isEmail(uemail)) {
+            SetisEmailValid(true);
+            axios.post(process.env.REACT_APP_API_DOMAIN + "/user/is-email-available", {
+                email: uemail
+            }).then(res => {
+                if (res.data.data) {
+                    SetisEmailValid(true);
+                } else {
+                    SetisEmailValid(false);
+                }
+            }).catch(err => {
+                console.log(err);
+            });
+        } else {
+            SetisEmailValid(false);
+        }
+    }, [uemail]);
+
+    const UserSignup = (e) => {
+        e.preventDefault();
+        const user = {
+            email: uemail,
+            password: password,
+            fullname: fullName,
+        };
+        if(password !== confirmPassword || password.length < 8){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password does not match! or password is less than 8 characters',
+            })
+            return;
+        }
+        axios.post(process.env.REACT_APP_API_DOMAIN + "/user/register", user).then(async (res) => {
+            console.log(res);
+            const { data } = await axios.post(process.env.REACT_APP_API_DOMAIN + "/user/sign-in", user);
+            console.log(data);
+            const token = data.data.token;
+            console.log(token);
+            const body = {
+                name: companyName,
+                ownername: ownerName,
+                address: companyAddress,
+                city: province,
+                url: companyUrl,
+                tel: telNo,
+                type: atype,
+                category: interests,
+            }
+            axios.post(process.env.REACT_APP_API_DOMAIN + "/company", body, {
+                headers: {
+                    "x-auth-token": token,
+                },
+            }).then(async (res) => {
+                console.log(res);
+                Swal.fire({
+                    title: 'Success',
+                    text: 'You have successfully registered',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    
+                }).catch(err => {
+                    console.log(err);
+                }
+                );
+            });
+
+        }).then(() => {
+            console.log("done");
+        });
+    }
 
     return (
         <>
@@ -25,12 +114,12 @@ function Signup() {
             <nav className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
                     <a className="navbar-item" href="/">
-                        <img src={navbarImage} alt="logo pic" width="35px" height="10px"/>
+                        <img src={navbarImage} alt="logo pic" width="35px" height="10px" />
                         <p>EzTends.lk</p>
                     </a>
 
                     <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false"
-                       data-target="navbarBasicExample">
+                        data-target="navbarBasicExample">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -80,7 +169,7 @@ function Signup() {
                     <div className="notification is-white" id="signup_container">
                         <div className="columns is-gapless">
                             <div className="column">
-                                <form className="box">
+                                <form className="box" onSubmit={UserSignup}>
                                     <div className="column" id="createAccountColumn">
                                         <p className="label" id="createAccountText">Create an Account</p>
                                     </div>
@@ -88,25 +177,32 @@ function Signup() {
                                         <label className="label">Email</label>
                                         <p className="control has-icons-left has-icons-right">
                                             <input className="input" type="email" value={uemail}
-                                                   onChange={(e) => {Setuemail(e.target.value)}}
-                                                   placeholder="e.g. alexsmith@gmail.com"/>
+                                                onChange={(e) => { Setuemail(e.target.value) }}
+                                                placeholder="e.g. alexsmith@gmail.com" />
                                             <span className="icon is-small is-left">
                                                 <i className="fas fa-envelope"></i>
                                             </span>
+                                            {isEmailValid &&
                                             <span className="icon is-small is-right">
                                                 <i className="fas fa-check"></i>
                                             </span>
+                                            }
+                                            {!isEmailValid &&
+                                            <span className="icon is-small is-right">
+                                                <i className="fas fa-times"></i>
+                                            </span>
+                                            }
                                         </p>
-                                        {/*<p className="help is-danger">This email is invalid</p>*/}
+                                        {!isEmailValid && <p className="help is-danger">Email is already taken or invalid</p>}
                                     </div>
                                     <div className="field">
                                         <label className="label">Full Name</label>
                                         <p className="control has-icons-left">
                                             <input className="input is-normal" type="text" value={fullName}
-                                                   onChange={(e) => {SetfullName(e.target.value)}}
-                                                   placeholder="e.g Alex Smith"/>
+                                                onChange={(e) => { SetfullName(e.target.value) }}
+                                                placeholder="e.g Alex Smith" />
                                             <span className="icon is-small is-left">
-                                              <i className="fa-solid fa-user"></i>
+                                                <i className="fa-solid fa-user"></i>
                                             </span>
                                         </p>
                                     </div>
@@ -116,27 +212,27 @@ function Signup() {
                                                 <label className="label">Password</label>
                                                 <p className="control has-icons-left">
                                                     <input className="input" type="password" value={password}
-                                                           onChange={(e) => {Setpassword(e.target.value)}}
-                                                           placeholder="Password"/>
+                                                        onChange={(e) => { Setpassword(e.target.value) }}
+                                                        placeholder="Password" />
                                                     <span className="icon is-small is-left">
-                                                         <i className="fas fa-lock"></i>
-                                                     </span>
+                                                        <i className="fas fa-lock"></i>
+                                                    </span>
                                                     <span className="icon is-small is-right">
                                                         <i className="fas fa-check"></i>
-                                                     </span>
+                                                    </span>
                                                 </p>
                                             </div>
                                             <div className="column">
                                                 <label className="label">Confirm Password</label>
                                                 <p className="control has-icons-left">
-                                                    <input className="input" type="password" value={password}
-                                                           onChange={(e) => {Setpassword(e.target.value)}}
-                                                           placeholder="Password"/>
+                                                    <input className="input" type="password" value={confirmPassword}
+                                                        onChange={(e) => { SetconfirmPassword(e.target.value) }}
+                                                        placeholder="Password" />
                                                     <span className="icon is-small is-left">
                                                         <i className="fas fa-lock"></i>
                                                     </span>
                                                     <span className="icon is-small is-right">
-                                                         <i className="fas fa-check"></i>
+                                                        <i className="fas fa-check"></i>
                                                     </span>
                                                 </p>
                                             </div>
@@ -144,15 +240,15 @@ function Signup() {
                                         <p className="help mt-0 has-text-grey">Note: Please enter password with at least
                                             8 characters</p>
                                     </div>
-                                    <hr/>
+                                    <hr />
                                     <div className="field">
                                         <label className="label">Company Name</label>
                                         <p className="control has-icons-left">
                                             <input className="input is-normal" type="text" value={companyName}
-                                                   onChange={(e) => {SetCompanyName(e.target.value)}}
-                                                   placeholder="e.g. Asia Lanka Private Limited"/>
+                                                onChange={(e) => { SetCompanyName(e.target.value) }}
+                                                placeholder="e.g. Asia Lanka Private Limited" />
                                             <span className="icon is-small is-left">
-                                              <i className="fa-solid fa-building"></i>
+                                                <i className="fa-solid fa-building"></i>
                                             </span>
                                         </p>
                                     </div>
@@ -160,10 +256,10 @@ function Signup() {
                                         <label className="label">Owner Name</label>
                                         <p className="control has-icons-left">
                                             <input className="input is-normal" type="text" value={ownerName}
-                                                   onChange={(e) => {SetownerName(e.target.value)}}
-                                                   placeholder="e.g Alex Smith"/>
+                                                onChange={(e) => { SetownerName(e.target.value) }}
+                                                placeholder="e.g Alex Smith" />
                                             <span className="icon is-small is-left">
-                                              <i className="fa-solid fa-user"></i>
+                                                <i className="fa-solid fa-user"></i>
                                             </span>
                                         </p>
                                     </div>
@@ -171,21 +267,21 @@ function Signup() {
                                         <label className="label">Company Address</label>
                                         <p className="control has-icons-left">
                                             <input className="input is-normal" type="text" value={companyAddress}
-                                                   onChange={(e) => {SetcompanyAddress(e.target.value)}}
-                                                   placeholder="No.220/A, Temple Rd, Nagoda, Kalutara"/>
+                                                onChange={(e) => { SetcompanyAddress(e.target.value) }}
+                                                placeholder="No.220/A, Temple Rd, Nagoda, Kalutara" />
                                             <span className="icon is-small is-left">
-                                             <i className="fa-solid fa-address-book"></i>
+                                                <i className="fa-solid fa-address-book"></i>
                                             </span>
                                         </p>
                                     </div>
                                     <div className="field">
                                         <label className="label">Company Web URL</label>
                                         <p className="control has-icons-left">
-                                            <input className="input is-normal" type="text" value={companyUrl}
-                                                   onChange={(e) => {SetcompanyUrl(e.target.value)}}
-                                                   placeholder="e.g. www.example.com"/>
+                                            <input className="input is-normal" type="url" value={companyUrl}
+                                                onChange={(e) => { SetcompanyUrl(e.target.value) }}
+                                                placeholder="e.g. www.example.com" />
                                             <span className="icon is-small is-left">
-                                             <i className="fa-solid fa-address-book"></i>
+                                                <i className="fa-solid fa-address-book"></i>
                                             </span>
                                         </p>
                                     </div>
@@ -194,18 +290,21 @@ function Signup() {
                                             <div className="column">
                                                 <label className="label">Telephone Number</label>
                                                 <p className="control has-icons-left">
-                                                    <input className="input is-normal" type="tel" value={telNo}
-                                                           onChange={(e) => {SettelNo(e.target.value)}}
-                                                           placeholder="e.g. 034-2223334"/>
+                                                    <input className="input is-normal" 
+                                                        type="tel" 
+                                                        value={telNo}
+                                                        pattern="[0-9]{10}"
+                                                        onChange={(e) => { SettelNo(e.target.value) }}
+                                                        placeholder="e.g. 0714444214" />
                                                     <span className="icon is-small is-left">
                                                         <i className="fas fa-tty"></i>
-                                                     </span>
+                                                    </span>
                                                 </p>
                                             </div>
                                             <div className="column">
                                                 <label className="label">Account Type</label>
                                                 <div className="select">
-                                                    <select value={atype} onChange={(e) => {Setatype(e.target.value)}}>
+                                                    <select value={atype} onChange={(e) => { Setatype(e.target.value) }}>
                                                         <option disabled selected>Select Your Type</option>
                                                         <option>Contractor</option>
                                                         <option>Sub-Contractor</option>
@@ -222,7 +321,7 @@ function Signup() {
                                                 <label className="label">Tenders Interested In</label>
                                                 <div className="select">
                                                     <select value={interests}
-                                                            onChange={(e) => {Setinterests(e.target.value)}}>
+                                                        onChange={(e) => { Setinterests(e.target.value) }}>
                                                         <option disabled selected>Select Your Interest</option>
                                                         <option value="Education">Education</option>
                                                         <option value="Packaging">Packaging</option>
@@ -281,7 +380,7 @@ function Signup() {
                                                 <label className="label">Province</label>
                                                 <div className="select">
                                                     <select value={province}
-                                                            onChange={(e) => {Setprovince(e.target.value)}}>
+                                                        onChange={(e) => { Setprovince(e.target.value) }}>
                                                         <option disabled selected>Select Your Province</option>
                                                         <option>Central Province</option>
                                                         <option>North Central Province</option>
@@ -299,8 +398,15 @@ function Signup() {
                                         </div>
                                     </div>
                                     <div className="column has-text-centered">
-                                        <button className="button is-primary is-rounded" id="signup_button">Create Your
-                                            Account
+                                        <button
+                                            className="button is-primary is-rounded"
+                                            id="signup_button"
+                                            // onClick={(e) => {
+                                            //     UserSignup(e)
+                                            // }}
+                                            type="submit"
+                                        >
+                                            Create YourAccount
                                         </button>
                                     </div>
                                     <div className="column" id="alreadyText">
@@ -312,7 +418,7 @@ function Signup() {
                             <div className="column" id="signup_right_side">
                                 <div className="is-rounded is-align-items-center" id="round_1">
                                     <div className="is-rounded is-align-items-center" id="round_2">
-                                        <img src={signup_image} alt="logo pic" id="signup_pic"/>
+                                        <img src={signup_image} alt="logo pic" id="signup_pic" />
                                     </div>
 
                                 </div>
@@ -324,101 +430,10 @@ function Signup() {
 
             {/*Section End*/}
 
-            {/*Start Footer */}
-            <footer className="footer has-background-grey" id="footer">
-                <div className="columns">
-                    <div className="column is-two-thirds">
-                        <div className="navbar-brand container">
-                            <a href="/">
-                                <p className="has-text-light" id="footer_name">EzTends.lk</p>
-                            </a>
-                        </div>
-                        <hr className="mt-0"/>
-                        <p className="is-size-6 has-text-light has-text-weight-medium">EzTends.lk is the most effective
-                            online tender marketplace in Sri Lanka</p>
-                        <div className="field mt-3 has-text-white">
-                                <span className="icon-text">
-                                  <span className="icon">
-                                    <i className="fas fa-home"></i>
-                                  </span>
-                                  <span>No. 571/17, Galle Road, Colombo 6.</span>
-                                </span>
-                        </div>
-                        <div className="field has-text-white">
-                                <span className="icon-text">
-                                  <span className="icon">
-                                    <i className="fa-solid fa-phone"></i>
-                                  </span>
-                                  <span>+94 77 719 6703</span>
-                                </span>
-                        </div>
-                        <div className="field has-text-white">
-                                <span className="icon-text">
-                                  <span className="icon">
-                                   <i className="fa-solid fa-envelope"></i>
-                                  </span>
-                                  <span>info@eztends.lk</span>
-                                </span>
-                        </div>
-                    </div>
-
-                    <div className="column ">
-                        <div className="navbar-brand container is-justify-content-center">
-                            <a href="https://www.facebook.com/" target="_blank">
-                                   <span>
-                                     <i className="fa-brands fa-facebook-square fa-3x footer_icon"></i>
-                                  </span>
-                            </a>
-                            <a href="https://twitter.com/" target="_blank" className="ml-5">
-                                   <span>
-                                     <i className="fa-brands fa-twitter-square fa-3x footer_icon"></i>
-                                  </span>
-                            </a>
-                            <a href="https://www.linkedin.com/" target="_blank" className="ml-5">
-                                   <span>
-                                    <i className="fa-brands fa-linkedin fa-3x footer_icon"></i>
-                                  </span>
-                            </a>
-                        </div>
-                        <ul className="container mt-3 has-text-centered has-text-white">
-                            <li>
-                                <a className="has-text-white" href="/">
-                                    <span className="footer_link">Home</span>
-                                </a>
-                            </li>
-
-                            <li className="pt-2">
-                                <a className="has-text-white mt-3" href="/tender">
-                                    <span className="footer_link">Tenders</span>
-                                </a>
-                            </li>
-
-                            <li className="pt-2">
-                                <a className="has-text-white" href="/about-us">
-                                    <span className="footer_link">About Us</span>
-                                </a>
-                            </li>
-
-                            <li className="pt-2">
-                                <a className="has-text-white" href="/contact">
-                                    <span className="footer_link">Contact</span>
-                                </a>
-                            </li>
-
-                        </ul>
-
-
-                    </div>
-                </div>
-                <div className="content has-text-centered">
-                    <p className="has-text-white">
-                        <strong className="has-text-white">All Rights Reserved.</strong> Copyrights © 2022 - EzTends.lk
-                    </p>
-                </div>
-            </footer>
+            
 
             {/*End Footer */}
-
+            <Footer />
 
         </>
     );
