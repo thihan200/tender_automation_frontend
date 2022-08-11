@@ -1,10 +1,22 @@
 import navbarImage from "../assets/full_logo.png";
 import signup_image from "../assets/sign_up.svg";
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 function Signup() {
-    return (
+    const [uemail,Setuemail]=useState("");
+    const [fullName,SetfullName]=useState("");
+    const [password,Setpassword]=useState("");
+    const [companyName,SetCompanyName]=useState("");
+    const [ownerName,SetownerName]=useState("");
+    const [companyAddress,SetcompanyAddress]=useState("");
+    const [companyUrl,SetcompanyUrl]=useState("");
+    const [telNo,SettelNo]=useState("");
+    const [atype,Setatype]=useState("");
+    const [interests,Setinterests]=useState("");
+    const [province,Setprovince]=useState("");
 
+    return (
         <>
             {/* Page Loading Start*/}
 
@@ -75,7 +87,8 @@ function Signup() {
                                     <div className="field">
                                         <label className="label">Email</label>
                                         <p className="control has-icons-left has-icons-right">
-                                            <input className="input" type="email"
+                                            <input className="input" type="email" value={uemail}
+                                                   onChange={(e) => {Setuemail(e.target.value)}}
                                                    placeholder="e.g. alexsmith@gmail.com"/>
                                             <span className="icon is-small is-left">
                                                 <i className="fas fa-envelope"></i>
@@ -87,9 +100,10 @@ function Signup() {
                                         {/*<p className="help is-danger">This email is invalid</p>*/}
                                     </div>
                                     <div className="field">
-                                        <label className="label">Owner Name</label>
+                                        <label className="label">Full Name</label>
                                         <p className="control has-icons-left">
-                                            <input className="input is-normal" type="text"
+                                            <input className="input is-normal" type="text" value={fullName}
+                                                   onChange={(e) => {SetfullName(e.target.value)}}
                                                    placeholder="e.g Alex Smith"/>
                                             <span className="icon is-small is-left">
                                               <i className="fa-solid fa-user"></i>
@@ -101,7 +115,9 @@ function Signup() {
                                             <div className="column">
                                                 <label className="label">Password</label>
                                                 <p className="control has-icons-left">
-                                                    <input className="input" type="password" placeholder="Password"/>
+                                                    <input className="input" type="password" value={password}
+                                                           onChange={(e) => {Setpassword(e.target.value)}}
+                                                           placeholder="Password"/>
                                                     <span className="icon is-small is-left">
                                                          <i className="fas fa-lock"></i>
                                                      </span>
@@ -113,7 +129,9 @@ function Signup() {
                                             <div className="column">
                                                 <label className="label">Confirm Password</label>
                                                 <p className="control has-icons-left">
-                                                    <input className="input" type="password" placeholder="Password"/>
+                                                    <input className="input" type="password" value={password}
+                                                           onChange={(e) => {Setpassword(e.target.value)}}
+                                                           placeholder="Password"/>
                                                     <span className="icon is-small is-left">
                                                         <i className="fas fa-lock"></i>
                                                     </span>
@@ -130,7 +148,8 @@ function Signup() {
                                     <div className="field">
                                         <label className="label">Company Name</label>
                                         <p className="control has-icons-left">
-                                            <input className="input is-normal" type="text"
+                                            <input className="input is-normal" type="text" value={companyName}
+                                                   onChange={(e) => {SetCompanyName(e.target.value)}}
                                                    placeholder="e.g. Asia Lanka Private Limited"/>
                                             <span className="icon is-small is-left">
                                               <i className="fa-solid fa-building"></i>
@@ -138,9 +157,21 @@ function Signup() {
                                         </p>
                                     </div>
                                     <div className="field">
+                                        <label className="label">Owner Name</label>
+                                        <p className="control has-icons-left">
+                                            <input className="input is-normal" type="text" value={ownerName}
+                                                   onChange={(e) => {SetownerName(e.target.value)}}
+                                                   placeholder="e.g Alex Smith"/>
+                                            <span className="icon is-small is-left">
+                                              <i className="fa-solid fa-user"></i>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div className="field">
                                         <label className="label">Company Address</label>
                                         <p className="control has-icons-left">
-                                            <input className="input is-normal" type="text"
+                                            <input className="input is-normal" type="text" value={companyAddress}
+                                                   onChange={(e) => {SetcompanyAddress(e.target.value)}}
                                                    placeholder="No.220/A, Temple Rd, Nagoda, Kalutara"/>
                                             <span className="icon is-small is-left">
                                              <i className="fa-solid fa-address-book"></i>
@@ -150,7 +181,8 @@ function Signup() {
                                     <div className="field">
                                         <label className="label">Company Web URL</label>
                                         <p className="control has-icons-left">
-                                            <input className="input is-normal" type="text"
+                                            <input className="input is-normal" type="text" value={companyUrl}
+                                                   onChange={(e) => {SetcompanyUrl(e.target.value)}}
                                                    placeholder="e.g. www.example.com"/>
                                             <span className="icon is-small is-left">
                                              <i className="fa-solid fa-address-book"></i>
@@ -162,7 +194,8 @@ function Signup() {
                                             <div className="column">
                                                 <label className="label">Telephone Number</label>
                                                 <p className="control has-icons-left">
-                                                    <input className="input is-normal" type="tel"
+                                                    <input className="input is-normal" type="tel" value={telNo}
+                                                           onChange={(e) => {SettelNo(e.target.value)}}
                                                            placeholder="e.g. 034-2223334"/>
                                                     <span className="icon is-small is-left">
                                                         <i className="fas fa-tty"></i>
@@ -170,14 +203,15 @@ function Signup() {
                                                 </p>
                                             </div>
                                             <div className="column">
-                                                <label className="label">Hotline</label>
-                                                <p className="control has-icons-left">
-                                                    <input className="input is-normal" type="tel"
-                                                           placeholder="e.g. 077-5764532"/>
-                                                    <span className="icon is-small is-left">
-                                                         <i className="fa-solid fa-phone"></i>
-                                                     </span>
-                                                </p>
+                                                <label className="label">Account Type</label>
+                                                <div className="select">
+                                                    <select value={atype} onChange={(e) => {Setatype(e.target.value)}}>
+                                                        <option disabled selected>Select Your Type</option>
+                                                        <option>Contractor</option>
+                                                        <option>Sub-Contractor</option>
+
+                                                    </select>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -187,7 +221,8 @@ function Signup() {
                                             <div className="column">
                                                 <label className="label">Tenders Interested In</label>
                                                 <div className="select">
-                                                    <select>
+                                                    <select value={interests}
+                                                            onChange={(e) => {Setinterests(e.target.value)}}>
                                                         <option disabled selected>Select Your Interest</option>
                                                         <option value="Education">Education</option>
                                                         <option value="Packaging">Packaging</option>
@@ -198,10 +233,10 @@ function Signup() {
                                                         <option value="Expression of Interests(EOI)">Expression of
                                                             Interests(EOI)
                                                         </option>
-                                                        <option value="Eninnering and Constructions">Engineering and
+                                                        <option value="Engineering and Constructions">Engineering and
                                                             Constructions
                                                         </option>
-                                                        <option value="Automobile and Trasport">Automobile and
+                                                        <option value="Automobile and Transport">Automobile and
                                                             Transport
                                                         </option>
                                                         <option value="IT and Electronics">IT and Electronics</option>
@@ -224,7 +259,7 @@ function Signup() {
                                                         <option value="Miscellaneous">Miscellaneous</option>
                                                         <option value="Furniture">Furniture</option>
                                                         <option value="Sales and Auctions">Sales and Auctions</option>
-                                                        <option value="Lands and Propertiesa">Lands and Properties
+                                                        <option value="Lands and Properties">Lands and Properties
                                                         </option>
                                                         <option value="Apparels and related Products">Apparels and
                                                             related Products
@@ -233,7 +268,7 @@ function Signup() {
                                                             Services
                                                         </option>
                                                         <option
-                                                            value="Distibutors/Partnerships">Distributors/Partnerships
+                                                            value="Distributors/Partnerships">Distributors/Partnerships
                                                         </option>
                                                         <option value="Chemicals and Related Services">Chemicals and
                                                             Related Services
@@ -245,7 +280,8 @@ function Signup() {
                                             <div className="column">
                                                 <label className="label">Province</label>
                                                 <div className="select">
-                                                    <select>
+                                                    <select value={province}
+                                                            onChange={(e) => {Setprovince(e.target.value)}}>
                                                         <option disabled selected>Select Your Province</option>
                                                         <option>Central Province</option>
                                                         <option>North Central Province</option>

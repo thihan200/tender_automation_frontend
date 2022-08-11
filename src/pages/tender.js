@@ -171,7 +171,7 @@ function Tender() {
                     <div className="column pl-5">
                         <div className="tabs is-medium">
                             <ul>
-                                <li className="is-active" data-target="latestTender1"><a>Live(7)</a></li>
+                                <li onClick={(e)=>{console.log("This is Live")}} className="is-active" data-target="latestTender1"><a>Live(7)</a></li>
                                 <li data-target="latestTender1"><a>Latest(24)</a></li>
                                 <li><a>Expired(145)</a></li>
                             </ul>
