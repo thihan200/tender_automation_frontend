@@ -73,7 +73,7 @@ function Signup() {
                                         <p className="label" id="createAccountText">Create an Account</p>
                                     </div>
                                     <div className="field">
-                                        <label className="label has-text-grey">Email</label>
+                                        <label className="label">Email</label>
                                         <p className="control has-icons-left has-icons-right">
                                             <input className="input" type="email"
                                                    placeholder="e.g. alexsmith@gmail.com"/>
@@ -84,16 +84,7 @@ function Signup() {
                                                 <i className="fas fa-check"></i>
                                             </span>
                                         </p>
-                                    </div>
-                                    <div className="field">
-                                        <label className="label">Company Name</label>
-                                        <p className="control has-icons-left">
-                                            <input className="input is-normal" type="text"
-                                                   placeholder="e.g. Asia Lanka Private Limited"/>
-                                            <span className="icon is-small is-left">
-                                              <i className="fa-solid fa-building"></i>
-                                            </span>
-                                        </p>
+                                        {/*<p className="help is-danger">This email is invalid</p>*/}
                                     </div>
                                     <div className="field">
                                         <label className="label">Owner Name</label>
@@ -102,6 +93,47 @@ function Signup() {
                                                    placeholder="e.g Alex Smith"/>
                                             <span className="icon is-small is-left">
                                               <i className="fa-solid fa-user"></i>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div className="field">
+                                        <div className="columns mb-0">
+                                            <div className="column">
+                                                <label className="label">Password</label>
+                                                <p className="control has-icons-left">
+                                                    <input className="input" type="password" placeholder="Password"/>
+                                                    <span className="icon is-small is-left">
+                                                         <i className="fas fa-lock"></i>
+                                                     </span>
+                                                    <span className="icon is-small is-right">
+                                                        <i className="fas fa-check"></i>
+                                                     </span>
+                                                </p>
+                                            </div>
+                                            <div className="column">
+                                                <label className="label">Confirm Password</label>
+                                                <p className="control has-icons-left">
+                                                    <input className="input" type="password" placeholder="Password"/>
+                                                    <span className="icon is-small is-left">
+                                                        <i className="fas fa-lock"></i>
+                                                    </span>
+                                                    <span className="icon is-small is-right">
+                                                         <i className="fas fa-check"></i>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p className="help mt-0 has-text-grey">Note: Please enter password with at least
+                                            8 characters</p>
+                                    </div>
+                                    <hr/>
+                                    <div className="field">
+                                        <label className="label">Company Name</label>
+                                        <p className="control has-icons-left">
+                                            <input className="input is-normal" type="text"
+                                                   placeholder="e.g. Asia Lanka Private Limited"/>
+                                            <span className="icon is-small is-left">
+                                              <i className="fa-solid fa-building"></i>
                                             </span>
                                         </p>
                                     </div>
@@ -133,26 +165,19 @@ function Signup() {
                                                     <input className="input is-normal" type="tel"
                                                            placeholder="e.g. 034-2223334"/>
                                                     <span className="icon is-small is-left">
-                                                         <i className="fa-solid fa-phone"></i>
+                                                        <i className="fas fa-tty"></i>
                                                      </span>
                                                 </p>
                                             </div>
                                             <div className="column">
-                                                <label className="label">Tenders Interested In</label>
-                                                <div className="select">
-                                                    <select>
-                                                        <option>Chemical Products</option>
-                                                        <option>Computer and IT</option>
-                                                        <option>Construction Work</option>
-                                                        <option>Drugs, Pharmaceuticals and Equipment</option>
-                                                        <option>Electrical and Electronic</option>
-                                                        <option>Agriculture and Food</option>
-                                                        <option>Machinery and Equipment</option>
-                                                        <option>Textiles</option>
-                                                        <option>Transport</option>
-                                                        <option>Wood and Furniture</option>
-                                                    </select>
-                                                </div>
+                                                <label className="label">Hotline</label>
+                                                <p className="control has-icons-left">
+                                                    <input className="input is-normal" type="tel"
+                                                           placeholder="e.g. 077-5764532"/>
+                                                    <span className="icon is-small is-left">
+                                                         <i className="fa-solid fa-phone"></i>
+                                                     </span>
+                                                </p>
 
                                             </div>
                                         </div>
@@ -160,28 +185,80 @@ function Signup() {
                                     <div className="field">
                                         <div className="columns">
                                             <div className="column">
-                                                <label className="label">Password</label>
-                                                <p className="control has-icons-left">
-                                                    <input className="input" type="password" placeholder="Password"/>
-                                                    <span className="icon is-small is-left">
-                                                         <i className="fas fa-lock"></i>
-                                                     </span>
-                                                    <span className="icon is-small is-right">
-                                                        <i className="fas fa-check"></i>
-                                                     </span>
-                                                </p>
+                                                <label className="label">Tenders Interested In</label>
+                                                <div className="select">
+                                                    <select>
+                                                        <option disabled selected>Select Your Interest</option>
+                                                        <option value="Education">Education</option>
+                                                        <option value="Packaging">Packaging</option>
+                                                        <option value="Supplier Registration">Supplier Registration
+                                                        </option>
+                                                        <option value="Services">Services</option>
+                                                        <option value="Medical">Medical</option>
+                                                        <option value="Expression of Interests(EOI)">Expression of
+                                                            Interests(EOI)
+                                                        </option>
+                                                        <option value="Eninnering and Constructions">Engineering and
+                                                            Constructions
+                                                        </option>
+                                                        <option value="Automobile and Trasport">Automobile and
+                                                            Transport
+                                                        </option>
+                                                        <option value="IT and Electronics">IT and Electronics</option>
+                                                        <option value="Power and Energy">Power and Energy</option>
+                                                        <option value="Aviation">Aviation</option>
+                                                        <option value="Hardware, Machinery and Equipment">Hardware,
+                                                            Machinery and Equipment
+                                                        </option>
+                                                        <option value="Agriculture and Food">Agriculture and Food
+                                                        </option>
+                                                        <option value="Hardware, Machinery and Equipment">Hardware,
+                                                            Machinery and Equipment
+                                                        </option>
+                                                        <option
+                                                            value="Printing, Packaging, Advertising and Stationeries">Printing,
+                                                            Packaging, Advertising and Stationeries
+                                                        </option>
+                                                        <option value="Hotel and Hospitality">Hotel and Hospitality
+                                                        </option>
+                                                        <option value="Miscellaneous">Miscellaneous</option>
+                                                        <option value="Furniture">Furniture</option>
+                                                        <option value="Sales and Auctions">Sales and Auctions</option>
+                                                        <option value="Lands and Propertiesa">Lands and Properties
+                                                        </option>
+                                                        <option value="Apparels and related Products">Apparels and
+                                                            related Products
+                                                        </option>
+                                                        <option value="Timber and Related Services">Timber and Related
+                                                            Services
+                                                        </option>
+                                                        <option
+                                                            value="Distibutors/Partnerships">Distributors/Partnerships
+                                                        </option>
+                                                        <option value="Chemicals and Related Services">Chemicals and
+                                                            Related Services
+                                                        </option>
+                                                        <option value="Sport Related Items">Sport Related Items</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div className="column">
-                                                <label className="label">Confirm Password</label>
-                                                <p className="control has-icons-left">
-                                                    <input className="input" type="password" placeholder="Password"/>
-                                                    <span className="icon is-small is-left">
-                                                        <i className="fas fa-lock"></i>
-                                                    </span>
-                                                    <span className="icon is-small is-right">
-                                                         <i className="fas fa-check"></i>
-                                                    </span>
-                                                </p>
+                                                <label className="label">Province</label>
+                                                <div className="select">
+                                                    <select>
+                                                        <option disabled selected>Select Your Province</option>
+                                                        <option>Central Province</option>
+                                                        <option>North Central Province</option>
+                                                        <option>Northern Province</option>
+                                                        <option>North Western Province</option>
+                                                        <option>Sabaragamuwa Province</option>
+                                                        <option>Southern Province</option>
+                                                        <option>Uwa Province</option>
+                                                        <option>Western Province</option>
+                                                        <option>Eastern Province</option>
+
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -221,7 +298,8 @@ function Signup() {
                             </a>
                         </div>
                         <hr className="mt-0"/>
-                        <p className="is-size-6 has-text-light has-text-weight-medium">EzTends.lk is the most effective online tender marketplace in Sri Lanka</p>
+                        <p className="is-size-6 has-text-light has-text-weight-medium">EzTends.lk is the most effective
+                            online tender marketplace in Sri Lanka</p>
                         <div className="field mt-3 has-text-white">
                                 <span className="icon-text">
                                   <span className="icon">
@@ -304,7 +382,6 @@ function Signup() {
             </footer>
 
             {/*End Footer */}
-
 
 
         </>

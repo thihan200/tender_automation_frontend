@@ -141,7 +141,7 @@
 
 .column #round_1{
     position: absolute;
-    top: 20%;
+    top: 22%;
     left: 53%;
     width: 500px;
     height: 500px;
@@ -252,6 +252,14 @@
     background-blend-mode: soft-light;
 }
 
+#filterList a{
+    color: green;
+}
+
+.tabs li.is-active a{
+    color: green;
+    font-weight: bold;
+}
 /*Footer*/
 #footer_name{
     font-size: 24px;

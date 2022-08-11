@@ -74,8 +74,8 @@ function Signin() {
                 <div className="column is-three-fifths is-offset-one-fifth" id="signin_container">
                     <div className="notification is-white" id="signup_container">
                         <div className="columns is-gapless ">
-                            <div className="column is-half" >
-                                <form className="box" >
+                            <div className="column is-half">
+                                <form className="box">
                                     <div className="column" id="createAccountColumn">
                                         <p className="label" id="createAccountText">Welcome Back !</p>
                                     </div>
@@ -93,23 +93,26 @@ function Signin() {
                                         </p>
                                     </div>
                                     <div className="field">
-                                                <label className="label">Password</label>
-                                                <p className="control has-icons-left">
-                                                    <input className="input" type="password" placeholder="Password"/>
-                                                    <span className="icon is-small is-left">
+                                        <label className="label">Password</label>
+                                        <p className="control has-icons-left">
+                                            <input className="input" type="password" placeholder="Password"/>
+                                            <span className="icon is-small is-left">
                                                          <i className="fas fa-lock"></i>
                                                      </span>
-                                                    <span className="icon is-small is-right">
+                                            <span className="icon is-small is-right">
                                                         <i className="fas fa-check"></i>
                                                      </span>
-                                                </p>
+                                        </p>
 
                                     </div>
                                     <div className="column has-text-centered">
-                                        <button className="button is-primary is-rounded" id="signup_button">Login</button>
+                                        <button className="button is-primary is-rounded" id="signup_button">Login
+                                        </button>
                                     </div>
                                     <div className="column" id="alreadyText">
-                                        <p className="has-text-centered">Don't you have an Account ? <span className="has-text-weight-bold"><Link to="/sign-up">Signup</Link></span></p>
+                                        <p className="has-text-centered">Don't you have an Account ? <span
+                                            className="has-text-weight-bold"><Link to="/sign-up">Signup</Link></span>
+                                        </p>
                                     </div>
                                 </form>
                             </div>
@@ -138,7 +141,8 @@ function Signin() {
                             </a>
                         </div>
                         <hr className="mt-0"/>
-                        <p className="is-size-6 has-text-light has-text-weight-medium">EzTends.lk is the most effective online tender marketplace in Sri Lanka</p>
+                        <p className="is-size-6 has-text-light has-text-weight-medium">EzTends.lk is the most effective
+                            online tender marketplace in Sri Lanka</p>
                         <div className="field mt-3 has-text-white">
                                 <span className="icon-text">
                                   <span className="icon">

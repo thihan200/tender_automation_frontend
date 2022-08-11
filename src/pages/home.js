@@ -113,7 +113,7 @@ function Home() {
        {/* End Section   */}
 
        {/*Start Section 2*/}
-            <section className="section" id="section2">
+            <section className="section pb-4" id="section2">
                 <h1 id="latestTender">Latest Tenders</h1>
                 <div className="columns">
                     <div className="column">
@@ -228,6 +228,9 @@ function Home() {
                             </footer>
                         </div>
                     </div>
+                </div>
+                <div className="column has-text-centered">
+                    <button className="button has-background-primary-dark has-text-white is-medium">See More</button>
                 </div>
             </section>
         {/*Start Section 2*/}
