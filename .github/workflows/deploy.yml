@@ -1,0 +1,16 @@
+name: 'Netlify Deploy'
+on:
+  push:
+    branches: [ "development", "master" ]
+  pull_request:
+    branches: [ "development", "master" ]
+
+jobs:
+  deploy:
+    name: 'Deploy to Netlify'
+    steps:
+      - uses: jsmrcaga/action-netlify-deploy@v1.8.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_API_KEY }}
+          NETLIFY_DEPLOY_TO_PROD: true
+          NETLIFY_SITE_ID : "zesty-semifreddo-ce0b4c"
