@@ -57,7 +57,7 @@ function Signup() {
             password: password,
             fullname: fullName,
         };
-        if(password !== confirmPassword || password.length < 8){
+        if (password !== confirmPassword || password.length < 8) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -93,11 +93,14 @@ function Signup() {
                     icon: 'success',
                     confirmButtonText: 'OK'
                 }).then(() => {
-                    
+
                 }).catch(err => {
                     console.log(err);
                 }
                 );
+                setTimeout(() => {
+                    window.location.href = "/sign-in";
+                }, 3000);
             });
 
         }).then(() => {
@@ -183,14 +186,14 @@ function Signup() {
                                                 <i className="fas fa-envelope"></i>
                                             </span>
                                             {isEmailValid &&
-                                            <span className="icon is-small is-right">
-                                                <i className="fas fa-check"></i>
-                                            </span>
+                                                <span className="icon is-small is-right">
+                                                    <i className="fas fa-check"></i>
+                                                </span>
                                             }
                                             {!isEmailValid &&
-                                            <span className="icon is-small is-right">
-                                                <i className="fas fa-times"></i>
-                                            </span>
+                                                <span className="icon is-small is-right">
+                                                    <i className="fas fa-times"></i>
+                                                </span>
                                             }
                                         </p>
                                         {!isEmailValid && <p className="help is-danger">Email is already taken or invalid</p>}
@@ -290,8 +293,8 @@ function Signup() {
                                             <div className="column">
                                                 <label className="label">Telephone Number</label>
                                                 <p className="control has-icons-left">
-                                                    <input className="input is-normal" 
-                                                        type="tel" 
+                                                    <input className="input is-normal"
+                                                        type="tel"
                                                         value={telNo}
                                                         pattern="[0-9]{10}"
                                                         onChange={(e) => { SettelNo(e.target.value) }}

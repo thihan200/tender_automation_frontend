@@ -1,14 +1,53 @@
+import React, { useEffect, useState } from "react";
 import Navbar2 from "../component/navbar2";
 import profilePic from "../assets/profile_pic.jpg";
 import profilePic2 from "../assets/profilepic_2.PNG";
 import profilePic3 from "../assets/profilepic_3.PNG";
 import profilePic4 from "../assets/profilepic_4.PNG";
+import axios from "axios";
+import Swal from "sweetalert2";
+import validator from "validator";
 
 function MyAccount() {
+    const [user, setUser] = useState({});
+    const [company, setCompany] = useState({});
+
+    useEffect(() => {
+        // Update the document title using the browser API
+        document.title = "My Account";
+        async function fetchData() {
+            const res = await axios.get(
+                process.env.REACT_APP_API_DOMAIN + "/user/me",
+                {
+                    headers: {
+                        "x-auth-token": localStorage.getItem("token"),
+                    },
+                }
+            );
+            setUser(res.data.data);
+            console.log(res.data.data);
+
+            const res2 = await axios.get(`${process.env.REACT_APP_API_DOMAIN}/company/${JSON.parse(localStorage.getItem("user")).companyid}`, {
+                    headers: {
+                        "x-auth-token": localStorage.getItem("token"),
+                    },
+                }
+            );
+
+            // remove www from url
+            const edited = {
+                ...res2.data.data,
+                url: res2.data.data.url.replace(/^https?\:\/\//i, "")
+            }
+            setCompany(edited);
+            console.log(res2.data.data);
+        }
+        fetchData();
+    }, []);
     return (
         <>
             {/*Start Header*/}
-            <Navbar2/>
+            <Navbar2 />
             {/*End Header*/}
 
             <section className="section" id="myAccount_Background">
@@ -16,14 +55,14 @@ function MyAccount() {
                     <div className="column is-one-quarter has-text-centered">
                         <div className="box">
                             <figure className="image is-128x128 is-inline-block">
-                                <img class="is-rounded" src={profilePic}/>
+                                <img class="is-rounded" src={profilePic} />
                             </figure>
-                            <br/>
+                            <br />
                             <h2 className="subtitle pt-2 mb-2">
-                                <strong>John David</strong>
+                                <strong>{user.fullname}</strong>
                             </h2>
                             <p>
-                                MAS Holding (Pvt) Ltd
+                                <strong>{company.name}</strong>
                             </p>
                             <p className="pt-2">
                                 <span className="fa fa-star checked"></span>
@@ -31,7 +70,7 @@ function MyAccount() {
                                 <span className="fa fa-star checked"></span>
                                 <span className="fa fa-star checked"></span>
                                 <span className="fa fa-star"></span>
-                                <span> (3 reviews)</span>
+                                <span> (X reviews)</span>
                             </p>
 
                         </div>
@@ -39,21 +78,21 @@ function MyAccount() {
                         <div className="box pb-5">
                             <span className="span-icon"><i className="fas fa-globe-asia"></i>&nbsp; URL</span>
                             <span className="span-text ">
-                                <a href="https://www.masholdings.com/" target="_blank"><strong className="#">www.masholdings.com</strong></a></span>
-                            <br/>
-                            <br/>
+                                <a href="https://www.masholdings.com/" target="_blank"><strong className="#"> {company.url}</strong></a></span>
+                            <br />
+                            <br />
                             <span className="span-icon"><i className="fas fa-user"></i>&nbsp; Member since</span>
-                            <span className="span-text "><strong>Nov 2021</strong></span>
-                            <br/>
-                            <br/>
+                            <span className="span-text "><strong> {new Date(user.created_at).toLocaleDateString()}</strong></span>
+                            <br />
+                            <br />
                             <span className="span-icon"><i className="fas fa-map-marker-alt"></i>&nbsp; From</span>
-                            <span className="span-text "><strong>Western Province</strong></span>
-                            <br/>
-                            <br/>
+                            <span className="span-text "><strong> {company.city}</strong></span>
+                            <br />
+                            <br />
                             <span className="span-icon"><i
                                 className="fas fa-paper-plane"></i>&nbsp; Last Delivery</span>
-                            <span className="span-text"><strong>4 months</strong></span>
-                            <br/>
+                            <span className="span-text"><strong>- months</strong></span>
+                            <br />
 
                         </div>
 
@@ -63,7 +102,7 @@ function MyAccount() {
                             <div className="field">
                                 <label className="label">Full Name</label>
                                 <p className="control has-icons-left">
-                                    <input className="input is-normal" type="text" value="John David" disabled/>
+                                    <input className="input is-normal" type="text" defaultValue={user.fullname} />
                                     <span className="icon is-small is-left">
                                         <i className="fa-solid fa-user"></i>
                                     </span>
@@ -73,7 +112,7 @@ function MyAccount() {
                             <div className="field">
                                 <label className="label">Email</label>
                                 <div className="control has-icons-left">
-                                    <input className="input" type="email" value="john200@gmail.com" disabled/>
+                                    <input className="input" type="email" defaultValue={user.email} />
                                     <span className="icon is-small is-left">
                                         <i className="fas fa-envelope"></i>
                                     </span>
@@ -83,8 +122,7 @@ function MyAccount() {
                             <div className="field">
                                 <label className="label">Company Name</label>
                                 <p className="control has-icons-left">
-                                    <input className="input is-normal" type="text"
-                                           value="Asia Lanka Private Limited" disabled/>
+                                    <input className="input is-normal" type="text" defaultValue={company.name}/>
                                     <span className="icon is-small is-left">
                                         <i className="fa-solid fa-building"></i>
                                     </span>
@@ -94,8 +132,7 @@ function MyAccount() {
                             <div className="field">
                                 <label className="label">Company Address</label>
                                 <p className="control has-icons-left">
-                                    <input className="input is-normal" type="text"
-                                           value="N0 289/A, Maradana, Colombo 10" disabled/>
+                                    <input className="input is-normal" type="text"  defaultValue={company.address}/>
                                     <span className="icon is-small is-left">
                                         <i className="fa-solid fa-address-book"></i>
                                     </span>
@@ -105,8 +142,7 @@ function MyAccount() {
                             <div className="field">
                                 <label className="label">Company Web URL</label>
                                 <p className="control has-icons-left">
-                                    <input className="input is-normal" type="url"
-                                           value="www.masholdings.com" disabled/>
+                                    <input className="input is-normal" type="url" defaultValue={company.url}/>
                                     <span className="icon is-small is-left">
                                         <i className="fa-solid fa-address-book"></i>
                                     </span>
@@ -116,7 +152,7 @@ function MyAccount() {
                             <div className="field">
                                 <label className="label">Telephone Number</label>
                                 <p className="control has-icons-left">
-                                    <input className="input is-normal" type="tel" value="0714444214" disabled/>
+                                    <input className="input is-normal" type="tel"  defaultValue={company.tel}/>
                                     <span className="icon is-small is-left">
                                         <i className="fas fa-tty"></i>
                                     </span>
@@ -126,8 +162,7 @@ function MyAccount() {
                             <div className="field">
                                 <label className="label">Province</label>
                                 <p className="control has-icons-left">
-                                    <input className="input is-normal" type="text"
-                                           value="Western Province" disabled/>
+                                    <input className="input is-normal" type="text" defaultValue={company.city}/>
                                     <span className="icon is-small is-left">
                                         <i className="fas fa-location"></i>
                                     </span>
@@ -146,7 +181,7 @@ function MyAccount() {
                                 <article className="media">
                                     <div className="media-left">
                                         <figure className="image is-64x64 ">
-                                            <img className="is-rounded" src={profilePic2} alt="Image"/>
+                                            <img className="is-rounded" src={profilePic2} alt="Image" />
                                         </figure>
                                     </div>
                                     <div className="media-content">
@@ -154,9 +189,9 @@ function MyAccount() {
                                             <p>
                                                 <strong>John Smith</strong>&emsp;<span className="fa fa-star checked">5</span>
                                                 <p className="mt-2">
-                                                Fast, efficient and professional.
-                                                I was very satisfied with communication and product delivery.
-                                                Thank you!
+                                                    Fast, efficient and professional.
+                                                    I was very satisfied with communication and product delivery.
+                                                    Thank you!
                                                 </p>
                                             </p>
                                         </div>
@@ -169,7 +204,7 @@ function MyAccount() {
                                 <article className="media">
                                     <div className="media-left">
                                         <figure className="image is-64x64 ">
-                                            <img className="is-rounded" src={profilePic3} alt="Image"/>
+                                            <img className="is-rounded" src={profilePic3} alt="Image" />
                                         </figure>
                                     </div>
                                     <div className="media-content">
@@ -190,7 +225,7 @@ function MyAccount() {
                                 <article className="media">
                                     <div className="media-left">
                                         <figure className="image is-64x64 ">
-                                            <img className="is-rounded" src={profilePic4} alt="Image"/>
+                                            <img className="is-rounded" src={profilePic4} alt="Image" />
                                         </figure>
                                     </div>
                                     <div className="media-content">
