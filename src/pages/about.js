@@ -138,7 +138,6 @@ function About() {
 
             {/*Start Footer */}
             <Footer />
-
             {/*End Footer */}
         </>
     );

@@ -12,6 +12,7 @@ import About from "./pages/about";
 import CreateTender from './pages/createTender';
 import Contact from './pages/contact';
 import Tender from './pages/tender'
+import MyAccount from './pages/myAccount'
 import Loading from "./component/loading";
 
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/create-tender" element={<CreateTender/>}/>
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/tender" element={<Tender/>}/>
+          <Route path="/my-account" element={<MyAccount/>}/>
 
 
           

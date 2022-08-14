@@ -36,7 +36,7 @@ function Signin() {
                 <div id="navbarBasicExample" className="navbar-menu">
                     <div className="navbar-end">
                         <div className="navbar-start">
-                            <Link className="navbar-item" id="home_Id" to="/">
+                            <Link className="navbar-item" to="/">
                                 Home
                             </Link>
 
@@ -93,9 +93,10 @@ function Signin() {
                                             </span>
                                         </p>
                                     </div>
+
                                     <div className="field">
                                         <label className="label">Password</label>
-                                        <p className="control has-icons-left">
+                                        <p className="control has-icons-left has-icons-right">
                                             <input className="input" type="password" placeholder="Password" />
                                             <span className="icon is-small is-left">
                                                 <i className="fas fa-lock"></i>
@@ -106,6 +107,7 @@ function Signin() {
                                         </p>
 
                                     </div>
+
                                     <div className="column has-text-centered">
                                         <button className="button is-primary is-rounded" id="signup_button">Login
                                         </button>

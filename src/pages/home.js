@@ -16,7 +16,7 @@ function Home() {
 
             {/*Page Loading End*/}
             {/*Start Header*/}
-            <nav className="navbar" role="navigation" aria-label="main navigation">
+            <nav className="navbar" role="navigation" aria-label="main navigation" >
                 <div className="navbar-brand">
                     <a className="navbar-item" href="/">
                         <img src={navbarImage} alt="logo pic" width="35px" height="10px" />
@@ -115,7 +115,7 @@ function Home() {
             {/* End Section   */}
 
             {/*Start Section 2*/}
-            <section className="section pb-4" id="section2">
+            <section className=" section pb-4" id="section2">
                 <h1 id="latestTender">Latest Tenders</h1>
                 <div className="columns">
                     <div className="column">
@@ -272,7 +272,6 @@ function Home() {
 
             {/*Start Footer */}
             <Footer />
-
             {/*End Footer */}
 
         </>
