@@ -44,12 +44,11 @@ function Navbar2() {
                                         <Link className="navbar-item" to="/my-account">
                                             My Account
                                         </Link>
-                                        <a className="navbar-item">
+                                        <Link className="navbar-item" to="/my-tender">
                                             My Tenders
-                                        </a>
-                                        <a className="navbar-item">
-                                            My reviews
-                                        </a>
+                                        </Link>
+                                        <Link className="navbar-item" to="/my-review">My reviews
+                                        </Link>
                                         <hr className="navbar-divider"/>
                                         <a className="navbar-item">
                                             Logout

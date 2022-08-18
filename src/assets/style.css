@@ -305,6 +305,32 @@
     float: right;
 }
 
+/*My Reviews*/
+
+.progress-container:before {
+    content: attr(data-text);
+    position: absolute;
+    right: -13%;
+    top:0;
+    line-height:1em;
+    color: green;
+}
+
+.progress-container2:before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    line-height:1em;
+}
+
+.progress-container {
+    text-align: center;
+    position: relative;
+    width: 14rem;
+}
+
 
 /*Footer*/
 #footer_name{

@@ -11,8 +11,10 @@ import Signup from "./pages/signup";
 import About from "./pages/about";
 import CreateTender from './pages/createTender';
 import Contact from './pages/contact';
-import Tender from './pages/tender'
-import MyAccount from './pages/myAccount'
+import Tender from './pages/tender';
+import MyAccount from './pages/myAccount';
+import MyTender from './pages/myTender';
+import MyReview from "./pages/myReview";
 import Loading from "./component/loading";
 
 
@@ -24,6 +26,7 @@ function App() {
             setLoading(false)
         },5000)
     },[])
+
 
   return (
       <>
@@ -48,9 +51,9 @@ function App() {
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/tender" element={<Tender/>}/>
           <Route path="/my-account" element={<MyAccount/>}/>
-
-
-          
+          <Route path="/my-tender" element={<MyTender/>}/>
+          <Route path="/my-review" element={<MyReview/>}/>
+         
       </Routes>
     </>
   );
