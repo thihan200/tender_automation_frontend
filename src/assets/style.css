@@ -288,6 +288,16 @@
     margin-bottom: 8%;
 }
 
+.file-name{
+    Overflow: unset;
+    display: inline-table;
+
+}
+
+/*Tender Details*/
+#place-bid{
+    float: right;
+}
 /*My Account*/
 #myAccount_Background{
     background-color: lightgray;

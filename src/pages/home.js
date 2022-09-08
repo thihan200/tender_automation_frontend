@@ -232,7 +232,9 @@ function Home() {
                     </div>
                 </div>
                 <div className="column has-text-centered">
+                    <Link to="/tender">
                     <button className="button has-background-primary-dark has-text-white is-medium">See More</button>
+                    </Link>
                 </div>
             </section>
             {/*Start Section 2*/}

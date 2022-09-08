@@ -184,7 +184,7 @@ function Tender() {
                         </div>
 
                         <div id="tab-content">
-                            <a href="#">
+                            <Link to="/tender-detail">
                                 <div className="card has-background-light" id="latestTender1">
                                     <header className="card-header">
                                         <p className="card-header-title">
@@ -210,7 +210,7 @@ function Tender() {
                                         <p className="card-footer-item has-background-primary has-text-white has-text-weight-bold">7 Days Remaining</p>
                                     </footer>
                                 </div>
-                            </a>
+                            </Link>
 
                             <a href="#">
                                 <div className="card has-background-light mt-5" id="latestTender2">
