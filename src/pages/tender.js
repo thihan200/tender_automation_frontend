@@ -1,8 +1,41 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from 'react';
 import navbarImage from "../assets/full_logo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Footer from "../component/footer.jsx";
+import categories from "../data/categories.json";
 
 function Tender() {
+
+    const [search, setSearch] = React.useState("");
+    const [tenders, setTenders] = React.useState([]);
+    const [category, setCategory] = React.useState("All");
+
+    React.useEffect(() => {
+        console.log("useEffect [search, category]", search, category);
+        //update the url with the search and category
+        const url = new URL(window.location.href);
+        url.searchParams.set("search", search);
+        url.searchParams.set("category", category);
+        window.history.pushState({}, "", url);
+
+        const cat = category === "All" ? "" : category;
+        axios.get(`${process.env.REACT_APP_API_DOMAIN}/tender?search=${search}&category=${cat}`,
+            {
+                headers: {
+                    "x-auth-token": localStorage.getItem("token"),
+                },
+            }
+        ).then((res) => {
+            console.log(res.data);
+            setTenders(res.data.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, [search, category]);
+
     return (
         <>
             {/* Page Loading Start*/}
@@ -83,7 +116,7 @@ function Tender() {
                                 <div className="column is-three-quarters">
                                     <div className="panel-block">
                                         <p className="control has-icons-left">
-                                            <input className="input is-success" type="text" placeholder="Search" />
+                                            <input className="input is-success" type="text" placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
                                             <span className="icon is-left">
                                                 <i className="fas fa-search" aria-hidden="true"></i>
                                             </span>
@@ -111,33 +144,11 @@ function Tender() {
                             <p className="menu-label">
                                 Industries
                             </p>
-                            <ul className="menu-list" id="filterList">
-                                <li><a>Education</a></li>
-                                <li><a>Packaging</a></li>
-                                <li><a>Supplier Registration</a></li>
-                                <li><a>Services</a></li>
-                                <li><a>Medical</a></li>
-                                <li><a>Expression of Interests(EOI)</a></li>
-                                <li><a>Engineering and Constructions</a></li>
-                                <li><a>Automobile and Transport</a></li>
-                                <li><a>IT and Electronics</a></li>
-                                <li><a>Power and Energy</a></li>
-                                <li><a>Aviation</a></li>
-                                <li><a>Hardware, Machinery and Equipment</a></li>
-                                <li><a>Agriculture and Food</a></li>
-                                <li><a>Hardware, Machinery and Equipment</a></li>
-                                <li><a>Printing, Packaging, Advertising and Stationeries</a></li>
-                                <li><a>Hotel and Hospitality</a></li>
-                                <li><a>Miscellaneous</a></li>
-                                <li><a>Furniture</a></li>
-                                <li><a>Sales and Auctions</a></li>
-                                <li><a>Lands and Properties</a></li>
-                                <li><a>Apparels and related Products</a></li>
-                                <li><a>Timber and Related Services</a></li>
-                                <li><a>Distributors/Partnerships</a></li>
-                                <li><a>Chemicals and Related Services</a></li>
-                                <li><a>Sport Related Items</a></li>
-
+                            <ul className="menu-list" id="filterList" onClick={(e) => setCategory(e.target.innerText)}>
+                                <li><a className={`${category === "All" ? "has-text-weight-bold" : ""}`}>All</a></li>
+                                {categories.map((c) => (
+                                    <li><a className={`${category === c ? "has-text-weight-bold" : ""}`}>{c}</a></li>
+                                ))}
                             </ul>
                         </aside>
                         <div className="column pt-5">
@@ -183,142 +194,38 @@ function Tender() {
                             </Link>
                         </div>
 
-                        <div id="tab-content">
-                            <Link to="/tender-detail">
-                                <div className="card has-background-light" id="latestTender1">
+                        <div id="tab-content" className="mr-5">
+                            {tenders.map((tender) => (
+                                <div className="card has-background-light" key={tender.id} style={{ marginBottom: "2.5rem" }}>
                                     <header className="card-header">
                                         <p className="card-header-title">
-                                            PURCHASE OF LAB EQUIPMENTS FOR DEPT. OF ELECTRICAL, ELECTRONIC &
-                                            TELECOMMUNICATION
+                                            {tender.title.toUpperCase()}
                                         </p>
                                     </header>
                                     <div className="card-content">
-                                        <p className="is-size-6" id="card_category">Electrical and Electronic</p>
-                                        <p className="is-size-7">(Sign into view)</p>
+                                        <p className="is-size-6" id="card_category">{tender.category}</p>
+                                        {/* <p className="is-size-7">(Sign into view)</p> */}
                                         <div className="icon-text pt-3 is-size-6">
                                             <span className="icon has-text-primary ">
                                                 <i className="fa-solid fa-location-dot "></i>
                                             </span>
-                                            <span>Western Province</span>
-                                            <span className="ml-6"><strong>Ref: </strong>T001</span>
-                                            <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
+                                            <span>{tender.location}</span>
+                                            <span className="ml-6"><strong>Ref: </strong>{tender.ref}</span>
+                                            <span className="ml-6"><strong>Posted By: </strong>{tender.company.name}</span>
                                         </div>
                                     </div>
                                     <footer className="card-footer">
-                                        <p className="card-footer-item"><strong>Published On :&nbsp;</strong>(Sign into view)</p>
-                                        <p className="card-footer-item"><strong>Closed On : &nbsp;</strong>20 August 2022</p>
-                                        <p className="card-footer-item has-background-primary has-text-white has-text-weight-bold">7 Days Remaining</p>
+                                        <p className="card-footer-item"><strong>Published On :&nbsp;</strong>{new Date(tender.created_at).toDateString()}</p>
+                                        <p className="card-footer-item"><strong>Closing On : &nbsp;</strong>{new Date(tender.expirydate).toDateString()}</p>
+                                        <p className={`card-footer-item has-text-white has-text-weight-bold has-background-${Math.floor((Date.parse(tender.expirydate) - Date.parse(new Date()))/86400000) < 0 ? "danger" : "primary"}`}>
+                                            {Math.floor((Date.parse(tender.expirydate) - Date.parse(new Date()))/86400000) < 0 ? "Expired" : Math.floor((Date.parse(tender.expirydate) - Date.parse(new Date()))/86400000) + " Days Left"}
+                                        </p>
                                     </footer>
                                 </div>
-                            </Link>
+                            ))}
 
-                            <a href="#">
-                                <div className="card has-background-light mt-5" id="latestTender2">
-                                    <header className="card-header">
-                                        <p className="card-header-title">
-                                            REPAIR OF DESCKTOP MACHINE AT KDU CARE-KDU/PRO/RP&SERVICE/137/2022
-                                        </p>
-                                    </header>
-                                    <div className="card-content">
-                                        <p className="is-size-6" id="card_category">Computer and IT</p>
-                                        <p className="is-size-7">(Sign into view)</p>
-                                        <div className="icon-text pt-3 is-size-6">
-                                            <span className="icon has-text-primary ">
-                                                <i className="fa-solid fa-location-dot "></i>
-                                            </span>
-                                            <span>Western Province</span>
-                                            <span className="ml-6"><strong>Ref: </strong>T002</span>
-                                            <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
-                                        </div>
-                                    </div>
-                                    <footer className="card-footer">
-                                        <p className="card-footer-item"><strong>Published On :&nbsp;</strong>(Sign into view)</p>
-                                        <p className="card-footer-item"><strong>Closed On : &nbsp;</strong>25 August 2022</p>
-                                        <p className="card-footer-item has-background-primary has-text-white has-text-weight-bold">12 Days Remaining</p>
-                                    </footer>
-                                </div>
-                            </a>
+                            {tenders.length === 0 && <div className="has-text-centered"> <p className="is-size-4">No Tenders Found on this Category</p></div>}
 
-                            <a href="#">
-                                <div className="card has-background-light mt-5" id="latestTender3">
-                                    <header className="card-header">
-                                        <p className="card-header-title">
-                                            PURCHASE OF LAB TOOLS FOR FOT-KDU/PRO/CAP/153/2022
-                                        </p>
-                                    </header>
-                                    <div className="card-content">
-                                        <p className="is-size-6" id="card_category">Chemical Products</p>
-                                        <p className="is-size-7">(Sign into view)</p>
-                                        <div className="icon-text pt-3 is-size-6">
-                                            <span className="icon has-text-primary ">
-                                                <i className="fa-solid fa-location-dot "></i>
-                                            </span>
-                                            <span>Western Province</span>
-                                            <span className="ml-6"><strong>Ref: </strong>T003</span>
-                                            <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
-                                        </div>
-                                    </div>
-                                    <footer className="card-footer">
-                                        <p className="card-footer-item"><strong>Published On :&nbsp;</strong>(Sign into view)</p>
-                                        <p className="card-footer-item"><strong>Closed On : &nbsp;</strong>27 August 2022</p>
-                                        <p className="card-footer-item has-background-primary has-text-white has-text-weight-bold">15 Days Remaining</p>
-                                    </footer>
-                                </div>
-                            </a>
-
-                            <a href="#">
-                                <div className="card has-background-light mt-5" id="latestTender4">
-                                    <header className="card-header">
-                                        <p className="card-header-title">
-                                            Boat Service Between Jetty at Lakvijaya Power Plant & Coal Vessels at Puttalam
-                                        </p>
-                                    </header>
-                                    <div className="card-content">
-                                        <p className="is-size-6" id="card_category">Transport</p>
-                                        <p className="is-size-7">(Sign into view)</p>
-                                        <div className="icon-text pt-3 is-size-6">
-                                            <span className="icon has-text-primary ">
-                                                <i className="fa-solid fa-location-dot "></i>
-                                            </span>
-                                            <span>Western Province</span>
-                                            <span className="ml-6"><strong>Ref: </strong>T004</span>
-                                            <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
-                                        </div>
-                                    </div>
-                                    <footer className="card-footer">
-                                        <p className="card-footer-item"><strong>Published On :&nbsp;</strong>(Sign into view)</p>
-                                        <p className="card-footer-item"><strong>Closed On : &nbsp;</strong>31 August 2022</p>
-                                        <p className="card-footer-item has-background-primary has-text-white has-text-weight-bold">17 Days Remaining</p>
-                                    </footer>
-                                </div>
-                            </a>
-
-                            <a href="#">
-                                <div className="card has-background-light mt-5" id="latestTender5">
-                                    <header className="card-header">
-                                        <p className="card-header-title">
-                                            Supply & Delivery of Primary Activity Room Equipment Set
-                                        </p>
-                                    </header>
-                                    <div className="card-content">
-                                        <p className="is-size-6" id="card_category">Other Stationery Items, Training and Testing Equipmen</p>
-                                        <p className="is-size-7">(Sign into view)</p>
-                                        <div className="icon-text pt-3 is-size-6">
-                                            <span className="icon has-text-primary ">
-                                                <i className="fa-solid fa-location-dot "></i>
-                                            </span>
-                                            <span>Western Province</span>
-                                            <span className="ml-6"><strong>Ref: </strong>T005</span>
-                                            <span className="ml-6"><strong>Source: </strong>(Sign into view)</span>
-                                        </div>
-                                    </div>
-                                    <footer className="card-footer">
-                                        <p className="card-footer-item"><strong>Published On :&nbsp;</strong>(Sign into view)</p>
-                                        <p className="card-footer-item"><strong>Closed On : &nbsp;</strong>4 September 2022</p>
-                                        <p className="card-footer-item has-background-primary has-text-white has-text-weight-bold">21 Days Remaining</p>
-                                    </footer>
-                                </div>
-                            </a>
                         </div>
 
                     </div>

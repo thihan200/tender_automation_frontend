@@ -5,6 +5,7 @@ import Navbar2 from "../component/navbar2";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import categories from "../data/categories.json";
 
 function CreateTender() {
     const [tenderTitle, setTenderTitle] = useState("");
@@ -111,55 +112,9 @@ function CreateTender() {
                                                 value={tenderType}
                                             >
                                                 <option disabled selected>Select Your Interest</option>
-                                                <option value="Education">Education</option>
-                                                <option value="Packaging">Packaging</option>
-                                                <option value="Supplier Registration">Supplier Registration</option>
-                                                <option value="Services">Services</option>
-                                                <option value="Medical">Medical</option>
-                                                <option value="Expression of Interests(EOI)">Expression of
-                                                    Interests(EOI)
-                                                </option>
-                                                <option value="Engineering and Constructions">Engineering and
-                                                    Constructions
-                                                </option>
-                                                <option value="Automobile and Transport">Automobile and
-                                                    Transport
-                                                </option>
-                                                <option value="IT and Electronics">IT and Electronics</option>
-                                                <option value="Power and Energy">Power and Energy</option>
-                                                <option value="Aviation">Aviation</option>
-                                                <option value="Hardware, Machinery and Equipment">Hardware,
-                                                    Machinery and Equipment
-                                                </option>
-                                                <option value="Agriculture and Food">Agriculture and Food
-                                                </option>
-                                                <option value="Hardware, Machinery and Equipment">Hardware,
-                                                    Machinery and Equipment
-                                                </option>
-                                                <option
-                                                    value="Printing, Packaging, Advertising and Stationeries">Printing,
-                                                    Packaging, Advertising and Stationeries
-                                                </option>
-                                                <option value="Hotel and Hospitality">Hotel and Hospitality
-                                                </option>
-                                                <option value="Miscellaneous">Miscellaneous</option>
-                                                <option value="Furniture">Furniture</option>
-                                                <option value="Sales and Auctions">Sales and Auctions</option>
-                                                <option value="Lands and Properties">Lands and Properties
-                                                </option>
-                                                <option value="Apparels and related Products">Apparels and
-                                                    related Products
-                                                </option>
-                                                <option value="Timber and Related Services">Timber and Related
-                                                    Services
-                                                </option>
-                                                <option
-                                                    value="Distributors/Partnerships">Distributors/Partnerships
-                                                </option>
-                                                <option value="Chemicals and Related Services">Chemicals and
-                                                    Related Services
-                                                </option>
-                                                <option value="Sport Related Items">Sport Related Items</option>
+                                                {categories.map((category) => (
+                                                    <option value={category}>{category}</option>
+                                                ))}
                                             </select>
                                         </div>
                                     </div>
