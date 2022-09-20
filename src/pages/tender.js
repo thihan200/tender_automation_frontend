@@ -1,17 +1,24 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import navbarImage from "../assets/full_logo.png";
+import forward_icon from "../assets/icon_forward.gif";
 import { Link, useHistory } from "react-router-dom";
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Footer from "../component/footer.jsx";
 import categories from "../data/categories.json";
+import provinces from "../data/province.json";
 
 function Tender() {
 
     const [search, setSearch] = React.useState("");
     const [tenders, setTenders] = React.useState([]);
     const [category, setCategory] = React.useState("All");
+    const [toggleState, setToggleState] = React.useState(1);
+
+    const toggleTab = (index) => {
+        setToggleState(index);
+    }
 
     React.useEffect(() => {
         console.log("useEffect [search, category]", search, category);
@@ -138,7 +145,7 @@ function Tender() {
             {/*Start Section 2*/}
             <section className="section">
                 <div className="columns">
-                    <div className="box column is-one-quarter">
+                    <div className="box column is-one-quarter mb-6" id="side-filter">
                         <h1 className='subtitle'><strong>Filter</strong></h1>
                         <aside className="menu">
                             <p className="menu-label">
@@ -183,9 +190,9 @@ function Tender() {
                     <div className="column pl-5">
                         <div className="tabs is-medium">
                             <ul>
-                                <li onClick={(e) => { console.log("This is Live") }} className="is-active" data-target="latestTender1"><a>Live(7)</a></li>
-                                <li data-target="latestTender1"><a>Latest(24)</a></li>
-                                <li><a>Expired(145)</a></li>
+                                <li onClick={(e) => toggleTab(1)} className={toggleState===1 ? "is-active":""} ><a>Live(7)</a></li>
+                                <li onClick={(e) => toggleTab(2)} className={toggleState===2 ? "is-active":""} ><a>Expired(24)</a></li>
+                                <li onClick={(e) => toggleTab(3)} className={toggleState===3 ? "is-active":""} ><a>All(145)</a></li>
                             </ul>
                             <Link to="/create-tender">
                                 <button className="button is-medium has-text-white has-text-weight-bold is-success">Post
@@ -194,14 +201,22 @@ function Tender() {
                             </Link>
                         </div>
 
-                        <div id="tab-content" className="mr-5">
+                        <div className="mr-5">
                             {tenders.map((tender) => (
                                 <div className="card has-background-light" key={tender.id} style={{ marginBottom: "2.5rem" }}>
-                                    <header className="card-header">
+                                    <a href="/tender/:id">
+                                    <header className="card-header has-icons-right">
                                         <p className="card-header-title">
                                             {tender.title.toUpperCase()}
                                         </p>
+
+                                        <span className="icon is-large is-right">
+                                                <i className="fa-solid fas fa-lg fa-angles-right fa-beat"></i>
+
+
+                                        </span>
                                     </header>
+                                    </a>
                                     <div className="card-content">
                                         <p className="is-size-6" id="card_category">{tender.category}</p>
                                         {/* <p className="is-size-7">(Sign into view)</p> */}
@@ -227,6 +242,21 @@ function Tender() {
                             {tenders.length === 0 && <div className="has-text-centered"> <p className="is-size-4">No Tenders Found on this Category</p></div>}
 
                         </div>
+
+                        {/*Pagination*/}
+                        <nav className="pagination is-centered mr-5" role="navigation" aria-label="pagination">
+                            <a className="pagination-previous">Previous</a>
+                            <a className="pagination-next">Next</a>
+                            <ul className="pagination-list">
+                                <li><a className="pagination-link is-current" aria-label="Goto page 1">1</a></li>
+                                <li><a className="pagination-link" aria-label="Goto page 45">2</a></li>
+                                <li><a className="pagination-link " aria-label="Page 46" aria-current="page">3</a></li>
+                                <li><span className="pagination-ellipsis">&hellip;</span></li>
+                                <li><a className="pagination-link" aria-label="Goto page 47">47</a></li>
+                                <li><span className="pagination-ellipsis">&hellip;</span></li>
+                                <li><a className="pagination-link" aria-label="Goto page 86">86</a></li>
+                            </ul>
+                        </nav>
 
                     </div>
 

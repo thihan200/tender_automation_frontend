@@ -264,6 +264,10 @@
     background-blend-mode: soft-light;
 }
 
+#side-filter{
+    height: 100%;
+}
+
 #filterList a{
     color: green;
 }
@@ -276,6 +280,12 @@
 
 .tabs ul{
     border-bottom-color: white;
+}
+
+.pagination-link.is-current {
+    background-color: #48c78e;
+    border-color: #48c78e;
+    color: #fff
 }
 
 /*Post Tender*/
@@ -297,7 +307,14 @@
 /*Tender Details*/
 #place-bid{
     float: right;
+
 }
+
+#tender_detail_table{
+    line-height: 40px;
+}
+
+
 /*My Account*/
 #myAccount_Background{
     background-color: lightgray;
