@@ -168,7 +168,7 @@ function Signup() {
 
             {/*Section Start*/}
             <section className="section" id="signup_background">
-                <div className="container">
+                <div className="container" data-aos="fade-up">
                     <div className="notification is-white" id="signup_container">
                         <div className="columns is-gapless">
                             <div className="column">

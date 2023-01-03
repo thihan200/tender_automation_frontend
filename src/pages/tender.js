@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Footer from "../component/footer.jsx";
 import categories from "../data/categories.json";
+
 import provinces from "../data/province.json";
 
 function Tender() {
@@ -104,7 +105,7 @@ function Tender() {
             {/*Start Cover*/}
             <section className="hero is-medium has-background-grey" id="tender_hero_pic">
                 <div className="hero-body">
-                    <h1 className="title" id="about-hero-h1">
+                    <h1 className="title" id="about-hero-h1" data-aos="zoom-in">
                         Tenders
                     </h1>
                 </div>
@@ -114,7 +115,7 @@ function Tender() {
             {/*Start Section 1*/}
             <section className="section">
                 <div className="columns is-justify-content-center">
-                    <div className="column is-6">
+                    <div className="column is-6" data-aos="zoom-in">
                         <article className="panel is-success">
                             <p className="panel-heading ">
                                 Search Tender
@@ -201,7 +202,7 @@ function Tender() {
                             </Link>
                         </div>
 
-                        <div className="mr-5">
+                        <div className="mr-5" data-aos="fade-up">
                             {tenders.map((tender) => (
                                 <div className="card has-background-light" key={tender.id} style={{ marginBottom: "2.5rem" }}>
                                     <a href="/tender/:id">

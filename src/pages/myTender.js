@@ -1,5 +1,7 @@
 import Navbar2 from "../component/navbar2";
 import {Link} from "react-router-dom";
+import Footer from "../component/footer";
+import React from "react";
 
 function MyTender() {
     return(
@@ -10,7 +12,7 @@ function MyTender() {
 
             {/*Start Section 1*/}
             <section className="section" id="myAccount_Background">
-                <div className="box mt-6">
+                <div className="box mt-6" data-aos="fade-up">
                     <h1 className="is-size-3 has-text-weight-bold mb-3">My Tenders</h1>
                 <div className="tabs is-medium">
                     <ul>
@@ -72,6 +74,10 @@ function MyTender() {
                 </div>
             </section>
             {/*Start Section 2*/}
+
+            {/*Start Footer */}
+            <Footer />
+            {/*End Footer */}
 
         </>
     );

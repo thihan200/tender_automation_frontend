@@ -66,7 +66,7 @@ function About() {
             {/*Start Cover*/}
             <section className="hero is-medium has-background-grey" id="about_hero_pic">
                 <div className="hero-body">
-                    <h1 className="title" id="about-hero-h1">
+                    <h1 className="title" id="about-hero-h1" data-aos="zoom-in">
                         About Us
                     </h1>
                 </div>
@@ -75,7 +75,7 @@ function About() {
 
             {/*Section 1 Start*/}
             <section className="section">
-                <div className="columns">
+                <div className="columns" data-aos="fade-up">
                     <div className="column" >
                         <div className="card">
                             <div className="card-image">
@@ -101,7 +101,7 @@ function About() {
 
             {/*Section 2 Start*/}
             <section className="section" id="aboutSection2">
-                <div className="columns">
+                <div className="columns" data-aos="fade-up">
                     <div className="column" >
                         <h1 className="title" id="whoWeAre">Our Achievements</h1>
                         <h3 className="title mt-4" id="winner">

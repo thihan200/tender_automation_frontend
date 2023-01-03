@@ -70,11 +70,11 @@ function Home() {
             {/*Start Cover*/}
             <section className="hero is-large has-background-grey" id="home_hero_pic">
                 <div className="hero-body">
-                    <h1 className="title" id="hero-h1">
+                    <h1 className="title" id="hero-h1" data-aos="fade-down-right">
                         <p>THE LARGEST COLLECTION OF TENDERS</p>
                         <p>IN SRI LANKA</p>
                     </h1>
-                    <p className="subtitle" id="hero-p">
+                    <p className="subtitle" id="hero-p" data-aos="fade-down-left">
                         We at EzTends take pride in our services which we have had the pleasure of providing to you - our valued customers.
                     </p>
                 </div>
@@ -86,25 +86,25 @@ function Home() {
             {/*Start Section 1*/}
             <section className="section">
                 <div className="tile is-ancestor">
-                    <div className="tile is-parent">
+                    <div className="tile is-parent" data-aos="fade-down">
                         <article className="tile is-child box has-background-success-light">
                             <p className="title" id="title1">272433</p>
                             <p className="subtitle" id="subtitle1">All Tenders</p>
                         </article>
                     </div>
-                    <div className="tile is-parent">
+                    <div className="tile is-parent" data-aos="fade-down">
                         <article className="tile is-child box has-background-warning-light">
                             <p className="title" id="title2">726</p>
                             <p className="subtitle" id="subtitle2">Live Tenders</p>
                         </article>
                     </div>
-                    <div className="tile is-parent">
+                    <div className="tile is-parent" data-aos="fade-down">
                         <article className="tile is-child box has-background-link-light">
                             <p className="title" id="title3">1963</p>
                             <p className="subtitle" id="subtitle3">Departments</p>
                         </article>
                     </div>
-                    <div className="tile is-parent">
+                    <div className="tile is-parent" data-aos="fade-down">
                         <article className="tile is-child box has-background-danger-light">
                             <p className="title" id="title4">593</p>
                             <p className="subtitle" id="subtitle4">Suppliers</p>
@@ -117,9 +117,9 @@ function Home() {
             {/*Start Section 2*/}
             <section className=" section pb-4" id="section2">
                 <h1 id="latestTender">Latest Tenders</h1>
-                <div className="columns">
-                    <div className="column">
-                        <div className="card">
+                <div className="columns" data-aos="fade-up">
+                    <div className="column" >
+                        <div className="card" >
                             <header className="card-header">
                                 <p className="card-header-title">
                                     PURCHASE OF LAB EQUIPMENTS FOR DEPT. OF ELECTRICAL, ELECTRONIC & TELECOMMUNICATION
@@ -242,8 +242,8 @@ function Home() {
             {/*Start Section 3*/}
             <section className="section">
                 <h1 id="latestTender">Our Partners</h1>
-                <div className="columns has-text-centered">
-                    <div className="column">
+                <div className="columns has-text-centered slide-track">
+                    <div className="column slider">
                         <div className="is-align-items-center">
                             <img src={spmcLogo} />
                         </div>
@@ -267,6 +267,7 @@ function Home() {
                         </div>
                         <p><strong>Milko (Pvt) Ltd</strong></p>
                     </div>
+
                 </div>
             </section>
             {/*End Section 3*/}

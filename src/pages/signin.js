@@ -127,8 +127,8 @@ function Signin() {
             {/*End Header*/}
 
             {/*Section Start*/}
-            <section className="section " id="signup_background">
-                <div className="column is-three-fifths is-offset-one-fifth" id="signin_container">
+            <section className="section " id="signup_background" >
+                <div className="column is-three-fifths is-offset-one-fifth" id="signin_container" data-aos="fade-up">
                     <div className="notification is-white" id="signup_container">
                         <div className="columns is-gapless ">
                             <div className="column is-half">

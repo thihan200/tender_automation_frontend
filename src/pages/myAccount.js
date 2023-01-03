@@ -4,6 +4,7 @@ import profilePic from "../assets/profile_pic.jpg";
 import axios from "axios";
 import Swal from "sweetalert2";
 import validator from "validator";
+import Footer from "../component/footer";
 
 function MyAccount() {
     const [user, setUser] = useState({});
@@ -50,7 +51,7 @@ function MyAccount() {
             {/*End Header*/}
 
             <section className="section" id="myAccount_Background">
-                <div className="columns mt-6">
+                <div className="columns mt-6" data-aos="fade-up">
                     <div className="column is-one-quarter has-text-centered">
                         <div className="box">
                             <figure className="image is-128x128 is-inline-block">
@@ -249,6 +250,10 @@ function MyAccount() {
 
                 </div>
             </section>
+
+            {/*Start Footer */}
+            <Footer />
+            {/*End Footer */}
         </>
     );
 

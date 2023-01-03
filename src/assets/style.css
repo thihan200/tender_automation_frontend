@@ -124,6 +124,11 @@
     color: forestgreen;
 }
 
+.slider{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 #card_desc{
     font-size: 13px;
 }

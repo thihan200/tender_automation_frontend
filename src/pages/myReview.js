@@ -2,6 +2,8 @@ import Navbar2 from "../component/navbar2";
 import profilePic2 from "../assets/profilepic_2.PNG";
 import profilePic3 from "../assets/profilepic_3.PNG";
 import profilePic4 from "../assets/profilepic_4.PNG";
+import Footer from "../component/footer";
+import React from "react";
 
 function MyReview() {
     return(
@@ -12,7 +14,7 @@ function MyReview() {
 
             {/*Start Section 1*/}
             <section className="section" id="myAccount_Background">
-                <div className="columns">
+                <div className="columns" data-aos="fade-up">
                 <div className="column mt-6 is-two-fifths">
                     <div className="box">
                         <div className="columns">
@@ -224,6 +226,10 @@ function MyReview() {
                 </div>
             </section>
             {/*End Section 1*/}
+
+            {/*Start Footer */}
+            <Footer />
+            {/*End Footer */}
         </>
     );
 
