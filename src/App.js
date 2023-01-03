@@ -1,8 +1,10 @@
 import logo from './logo.svg';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Component } from "react";
 import './App.css';
 import './assets/style.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Audio } from 'react-loader-spinner';
 import Signin from "./pages/signin";
@@ -16,17 +18,28 @@ import MyAccount from './pages/myAccount';
 import MyTender from './pages/myTender';
 import MyReview from "./pages/myReview";
 import TenderDetail from "./pages/tenderDetail";
+import Slider from "react-slick";
 import Loading from "./component/loading";
+import {render} from "react-dom";
+
 
 
 function App() {
+
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
+    AOS.init({
+        duration: 1000
+    }, []);
+
     setTimeout(() => {
       setLoading(false)
-    }, 5000)
-  }, [])
+    }, 5000);
+
+  }, []);
+
 
 
   return (
@@ -55,6 +68,7 @@ function App() {
         <Route path="/my-tender" element={<MyTender />} />
         <Route path="/my-review" element={<MyReview />} />
         <Route path="/tender/:id" element={<TenderDetail />} />
+        
 
       </Routes>
     </>

@@ -16,6 +16,7 @@ function Contact() {
                     <a className="navbar-item" href="/">
                         <img src={navbarImage} alt="logo pic" width="35px" height="10px" />
                         <p>EzTends.lk</p>
+                        
                     </a>
 
                     <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -23,6 +24,7 @@ function Contact() {
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
+        
                     </a>
                 </div>
 
@@ -65,7 +67,7 @@ function Contact() {
             {/*Start Cover*/}
             <section className="hero is-medium has-background-grey" id="contact_hero_pic">
                 <div className="hero-body">
-                    <h1 className="title" id="about-hero-h1">
+                    <h1 className="title" id="about-hero-h1" data-aos="zoom-in">
                         Contact Us
                     </h1>
                 </div>
@@ -74,7 +76,7 @@ function Contact() {
 
             {/*Start Section 1*/}
             <section className="section">
-                <div className="columns">
+                <div className="columns" data-aos="fade-up">
                     <div className="column">
                         <form className="box" id="contactForm">
                             <h1 className="title" id="contactNow">Contact Now</h1>
@@ -156,7 +158,7 @@ function Contact() {
             {/* End Section 1*/}
 
             {/*Start Section 2 */}
-            <section className="section">
+            <section className="section" data-aos="fade-up">
                 <h1 className="title" id="contactNow">Management Team</h1>
                 <div className="columns">
                     <div className="column">

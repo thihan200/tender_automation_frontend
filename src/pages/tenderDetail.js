@@ -59,6 +59,7 @@ function TenderDetail() {
                                             <tr>
                                                 <td>Ref No</td>
                                                 <td><strong>A2YYY0T</strong></td>
+
                                             </tr>
                                             <tr>
                                                 <td>Closing On</td>
@@ -67,6 +68,7 @@ function TenderDetail() {
                                             <tr>
                                                 <td>Category</td>
                                                 <td><strong>Medical</strong></td>
+
                                             </tr>
                                             <tr>
                                                 <td>Location</td>
