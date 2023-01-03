@@ -203,9 +203,9 @@ function Tender() {
                         </div>
 
                         <div className="mr-5" data-aos="fade-up">
-                            {tenders.map((tender) => (
+                            {tenders.map((tender, index) => (
                                 <div className="card has-background-light" key={tender.id} style={{ marginBottom: "2.5rem" }}>
-                                    <a href="/tender/:id">
+                                    <Link to={`/tender/${tender.id}`}>
                                     <header className="card-header has-icons-right">
                                         <p className="card-header-title">
                                             {tender.title.toUpperCase()}
@@ -217,7 +217,7 @@ function Tender() {
 
                                         </span>
                                     </header>
-                                    </a>
+                                    </Link>
                                     <div className="card-content">
                                         <p className="is-size-6" id="card_category">{tender.category}</p>
                                         {/* <p className="is-size-7">(Sign into view)</p> */}

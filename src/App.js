@@ -5,7 +5,6 @@ import './App.css';
 import './assets/style.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { Audio } from 'react-loader-spinner';
 import Signin from "./pages/signin";
 import Home from "./pages/home";
