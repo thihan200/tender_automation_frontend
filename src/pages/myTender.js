@@ -1,9 +1,9 @@
-import Navbar2 from "../component/navbar2";
 import { Link } from "react-router-dom";
 import Footer from "../component/footer";
 import React from "react";
 import axios from "axios";
 
+import Navbar from "../component/navbar";
 
 
 function MyTender() {
@@ -37,7 +37,7 @@ function MyTender() {
   return (
     <>
       {/*Start Header*/}
-      <Navbar2 />
+      <Navbar />
       {/*End Header*/}
 
       {/*Start Section 1*/}

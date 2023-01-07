@@ -1,9 +1,9 @@
-import Navbar2 from "../component/navbar2";
 import { Link } from "react-router-dom";
 import React from "react";
 import Footer from "../component/footer";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../component/navbar";
 
 function TenderDetail() {
 
@@ -45,7 +45,7 @@ function TenderDetail() {
   return (
     <>
       {/*Start Header*/}
-      <Navbar2 />
+      <Navbar />
       {/*End Header*/}
 
       {/*Start Section 1*/}
@@ -63,7 +63,7 @@ function TenderDetail() {
                         </div>*/}
             <div className="box has-background-primary-light is-size-5">
               Place your bid, if you are ready to execute this tender
-              <a className="button is-success pb-2" id="place-bid"><strong>Place Bid</strong></a>
+              <a className="button is-success pb-2 disabled" id="place-bid"><strong>Place Bid</strong></a>
             </div>
             <blockquote className="pt-1 mt-4 pb-1 has-background-white-ter">Number of bids placed for this order is <strong>3</strong></blockquote>
           </div>

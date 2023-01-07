@@ -1,15 +1,15 @@
-import Navbar2 from "../component/navbar2";
 import profilePic2 from "../assets/profilepic_2.PNG";
 import profilePic3 from "../assets/profilepic_3.PNG";
 import profilePic4 from "../assets/profilepic_4.PNG";
 import Footer from "../component/footer";
 import React from "react";
+import Navbar from "../component/navbar";
 
 function MyReview() {
     return(
         <>
             {/*Start Header*/}
-            <Navbar2/>
+            <Navbar/>
             {/*End Header*/}
 
             {/*Start Section 1*/}
