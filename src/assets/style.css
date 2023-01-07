@@ -363,6 +363,21 @@
     width: 14rem;
 }
 
+/*My Tender*/
+.overlay-model{
+    background-color:rgb(211 211 211 / 16%);
+
+}
+
+#model-title{
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: bold;
+    width: 100%;
+}
+
 
 /*Footer*/
 #footer_name{

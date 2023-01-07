@@ -9,6 +9,7 @@ import Footer from "../component/footer.jsx";
 import categories from "../data/categories.json";
 
 import provinces from "../data/province.json";
+import profilePic from "../assets/profile_pic.jpg";
 
 function Tender() {
 
@@ -95,6 +96,48 @@ function Tender() {
                                 <Link className="button is-light" to="/sign-in">
                                     Log in
                                 </Link>
+
+                                {/*Start Account Header*/}
+                                <div id="navbarBasicExample" className="navbar-menu">
+                                    <div className="navbar-end">
+                                        <div className="dropdown is-hoverable">
+                                            <div className="dropdown-trigger pt-1">
+                                                <button className="button has-text-weight-bold" aria-haspopup="true" aria-controls="dropdown-menu4">
+                                    <span>
+                                         <figure className="image is-24x24 mr-2">
+                                            <img className="is-rounded" src={profilePic}/>
+                                        </figure>
+                                    </span>
+                                                    <span>John David</span>
+                                                    <span className="icon is-small">
+                                        <i className="fas fa-angle-down" aria-hidden="true"></i>
+                                      </span>
+                                                </button>
+                                            </div>
+                                            <div className="dropdown-menu pr-3" id="dropdown-menu4" role="menu">
+                                                <div className="dropdown-content">
+                                                    <div className="dropdown-item">
+                                                        <Link className="navbar-item" to="/my-account">
+                                                            My Account
+                                                        </Link>
+                                                        <Link className="navbar-item" to="/my-tender">
+                                                            My Tenders
+                                                        </Link>
+                                                        <Link className="navbar-item" to="/my-review">My reviews
+                                                        </Link>
+                                                        <hr className="navbar-divider"/>
+                                                        <a className="navbar-item">
+                                                            Logout
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/*End Account Header*/}
+
                             </div>
                         </div>
                     </div>
