@@ -1,22 +1,22 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
 import React from "react";
 import Footer from "../component/footer";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../component/navbar";
+import PlaceBidPopUp from "./placebid";
 
 function TenderDetail() {
 
   const [toggleState, setToggleState] = React.useState(1);
   const [modal, setModal] = React.useState(false);
   const [tender, setTender] = React.useState({});
+  const [isAllowed, setIsAllowed] = React.useState(false);
+  const [bidCount, setBidCount] = React.useState(0);
   const [company, setCompany] = React.useState({});
   //get id parameter from url from useLocation hook
   const { id } = useParams();
-
-  const toggleModal = () => {
-    setModal(!modal);
-  }
 
   async function fetchData() {
     const { data } = await axios.get(
@@ -40,8 +40,39 @@ function TenderDetail() {
     console.log(data.data[0]);
   }
 
+  async function isAllowedToBid() {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_DOMAIN}/tender/${id}/bid/allowed`,
+      {
+        headers: {
+          "x-auth-token": localStorage.getItem("token"),
+        },
+      }
+    );
+    if (data.data === true) {
+      setIsAllowed(true);
+    }
+    else {
+      setIsAllowed(false);
+    }
+  }
+
+  const getBidCount = async () => {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_DOMAIN}/tender/${id}/bid/count`,
+      {
+        headers: {
+          "x-auth-token": localStorage.getItem("token"),
+        },
+      }
+    );
+    setBidCount(data.data[0].count);
+  }
+
   React.useEffect(() => {
     fetchData();
+    isAllowedToBid();
+    getBidCount();
   }, [id]);
   const toggleTab = (index) => {
     setToggleState(index);
@@ -67,57 +98,29 @@ function TenderDetail() {
                             </div>
                         </div>*/}
             <div className="box has-background-primary-light is-size-5">
-              Place your bid, if you are ready to execute this tender
-              <a onClick={toggleModal}  className="button is-success pb-2 disabled" id="place-bid"><strong>Place Bid</strong></a>
+              {isAllowed ? (
+                <msg className="has-text-success">Place your bid, if you are ready to execute this tender</msg>
+              ) : (
+                <msg className="has-text-danger">You have already placed a bid for this tender</msg>
+              )}
+              <a
+                onClick={() => { 
+                  if (isAllowed) {
+                    setModal(true);
+                  }
+                }}
+                className="button is-success pb-2 disabled"
+                id="place-bid"
+                disabled={!isAllowed}
+              ><strong>Place Bid</strong></a>
 
               {/*Start Modal*/}
               {modal && (
-                  <div className="modal is-active" onClick={toggleModal} data-aos="zoom-in">
-                    <div className="modal-background overlay-model-2"></div>
-                    <div className="modal-card">
-                      <header className="modal-card-head">
-                        <p className="modal-card-title " id="model-title">  PURCHASE OF LAB EQUIPMENTS FOR DEPT. OF ELECTRICAL, ELECTRONIC & TELECOMMUNICATION</p>
-                        <button className="delete" aria-label="close"></button>
-                      </header>
-                      <section className="modal-card-body">
-                        <div className="card-content">
-                          <div className="content">
-                            <div className="field">
-                              <label className="label">Reference Number</label>
-                              <div className="control">
-                                <input className="input" type="text" value="AHVFHB5" disabled/>
-                              </div>
-                            </div>
-
-                            <div className="field mt-4">
-                              <label className="label">Expectd Amount to Spend</label>
-                              <div className="field has-addons has-addons">
-                                <p className="control">
-                                    <span className="select">
-                                      <select>
-                                        <option>LKR</option>
-                                        <option>$</option>
-                                      </select>
-                                    </span>
-                                </p>
-                                <p className="control">
-                                  <input className="input" type="text" placeholder="Amount of money"/>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </section>
-                      <footer className="modal-card-foot">
-                        <button className="button is-success"><strong>Place Bid</strong></button>
-                        <button className="button">Cancel</button>
-                      </footer>
-                    </div>
-                  </div>
+                <PlaceBidPopUp tender={tender} openModal={modal} setOpenModal={setModal} />
               )}
               {/*End Modal*/}
             </div>
-            <blockquote className="pt-1 mt-4 pb-1 has-background-white-ter">Number of bids placed for this order is <strong>3</strong></blockquote>
+            <blockquote className="pt-1 mt-4 pb-1 has-background-white-ter">Number of bids placed for this order is <strong> {bidCount}</strong></blockquote>
           </div>
           <div className="panel-block">
           </div>
@@ -147,7 +150,7 @@ function TenderDetail() {
                           <td>
                             <strong>
                               {new Date(tender?.expirydate).toLocaleString({ year: 'numeric', month: 'long', day: 'numeric' })}
-                              <span className={` has-text-weight-bold has-text-${Math.floor((Date.parse(tender.expirydate) - Date.parse(new Date()))/86400000) < 0 ? "danger" : "primary"}`}>
+                              <span className={` has-text-weight-bold has-text-${Math.floor((Date.parse(tender.expirydate) - Date.parse(new Date())) / 86400000) < 0 ? "danger" : "primary"}`}>
                                 {/* get remaining days */}
                                 {" "}
                                 {Math.floor((Date.parse(tender.expirydate) - Date.parse(new Date())) / 86400000) < 0 ? "Expired" : Math.floor((Date.parse(tender.expirydate) - Date.parse(new Date())) / 86400000) + " Days Left"}

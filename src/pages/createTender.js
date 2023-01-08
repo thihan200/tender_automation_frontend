@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import categories from "../data/categories.json";
 import profilePic from "../assets/profile_pic.jpg";
 import Navbar from "../component/navbar";
+import PlaceBidPopUp from "../pages/placebid";
 
 function CreateTender() {
     const [tenderTitle, setTenderTitle] = useState("");
@@ -64,7 +65,7 @@ function CreateTender() {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: res.data.error,
+                text: res.data.error.message,
             })
         } else {
             Swal.fire({
