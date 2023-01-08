@@ -41,7 +41,7 @@ function Navbar() {
         <div id="navbarBasicExample" className="navbar-menu">
           <div className="navbar-end">
             <div className="navbar-start">
-              <Link className="navbar-item" id="home_Id" to="/">
+              <Link className="navbar-item" to="/">
                 Home
               </Link>
 

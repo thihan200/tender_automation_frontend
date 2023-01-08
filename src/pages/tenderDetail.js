@@ -8,10 +8,15 @@ import Navbar from "../component/navbar";
 function TenderDetail() {
 
   const [toggleState, setToggleState] = React.useState(1);
+  const [modal, setModal] = React.useState(false);
   const [tender, setTender] = React.useState({});
   const [company, setCompany] = React.useState({});
   //get id parameter from url from useLocation hook
   const { id } = useParams();
+
+  const toggleModal = () => {
+    setModal(!modal);
+  }
 
   async function fetchData() {
     const { data } = await axios.get(
@@ -50,7 +55,7 @@ function TenderDetail() {
 
       {/*Start Section 1*/}
       <section className="section has-background-white-ter">
-        <nav className="panel mt-6">
+        <nav className="panel mt-6" data-aos="fade-up">
           <p className="panel-heading has-background-primary has-text-white">
             {tender?.title?.toUpperCase()}
           </p>
@@ -63,7 +68,54 @@ function TenderDetail() {
                         </div>*/}
             <div className="box has-background-primary-light is-size-5">
               Place your bid, if you are ready to execute this tender
-              <a className="button is-success pb-2 disabled" id="place-bid"><strong>Place Bid</strong></a>
+              <a onClick={toggleModal}  className="button is-success pb-2 disabled" id="place-bid"><strong>Place Bid</strong></a>
+
+              {/*Start Modal*/}
+              {modal && (
+                  <div className="modal is-active" onClick={toggleModal} data-aos="zoom-in">
+                    <div className="modal-background overlay-model-2"></div>
+                    <div className="modal-card">
+                      <header className="modal-card-head">
+                        <p className="modal-card-title " id="model-title">  PURCHASE OF LAB EQUIPMENTS FOR DEPT. OF ELECTRICAL, ELECTRONIC & TELECOMMUNICATION</p>
+                        <button className="delete" aria-label="close"></button>
+                      </header>
+                      <section className="modal-card-body">
+                        <div className="card-content">
+                          <div className="content">
+                            <div className="field">
+                              <label className="label">Reference Number</label>
+                              <div className="control">
+                                <input className="input" type="text" value="AHVFHB5" disabled/>
+                              </div>
+                            </div>
+
+                            <div className="field mt-4">
+                              <label className="label">Expectd Amount to Spend</label>
+                              <div className="field has-addons has-addons">
+                                <p className="control">
+                                    <span className="select">
+                                      <select>
+                                        <option>LKR</option>
+                                        <option>$</option>
+                                      </select>
+                                    </span>
+                                </p>
+                                <p className="control">
+                                  <input className="input" type="text" placeholder="Amount of money"/>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <footer className="modal-card-foot">
+                        <button className="button is-success"><strong>Place Bid</strong></button>
+                        <button className="button">Cancel</button>
+                      </footer>
+                    </div>
+                  </div>
+              )}
+              {/*End Modal*/}
             </div>
             <blockquote className="pt-1 mt-4 pb-1 has-background-white-ter">Number of bids placed for this order is <strong>3</strong></blockquote>
           </div>

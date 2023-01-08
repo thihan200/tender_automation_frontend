@@ -42,10 +42,6 @@
 
 }
 
-#home_Id{
-    background-color: lightgreen;
-}
-
 #home_Id:visited{
     color: black;
 }
@@ -366,6 +362,11 @@
 /*My Tender*/
 .overlay-model{
     background-color:rgb(211 211 211 / 16%);
+
+}
+
+.overlay-model-2{
+    background-color:rgb(211 211 211 / 46%);
 
 }
 

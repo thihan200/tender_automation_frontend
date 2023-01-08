@@ -193,7 +193,7 @@ function Home() {
             {/*Start Section 2*/}
 
             {/*Start Section 3*/}
-            <section className="section">
+            <section className="section" data-aos="fade-up">
                 <h1 id="latestTender">Our Partners</h1>
                 <div className="columns has-text-centered slide-track">
                     <div className="column slider">

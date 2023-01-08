@@ -150,7 +150,7 @@ function Tender() {
                                 <li onClick={(e) => toggleTab(3)} className={toggleState===3 ? "is-active":""} ><a>All(145)</a></li>
                             </ul>
                             <Link to="/create-tender">
-                                <button className="button is-medium has-text-white has-text-weight-bold is-success">Post
+                                <button className="button is-medium has-text-white has-text-weight-bold is-success" >Post
                                     Your Tender
                                 </button>
                             </Link>
