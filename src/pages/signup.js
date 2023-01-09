@@ -65,6 +65,14 @@ function Signup() {
             })
             return;
         }
+        if(!companyName || !ownerName || !companyAddress || !companyUrl || !telNo || !atype || !interests || !province){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please fill all the fields',
+            })
+            return;
+        }
         axios.post(process.env.REACT_APP_API_DOMAIN + "/user/register", user).then(async (res) => {
             console.log(res);
             const { data } = await axios.post(process.env.REACT_APP_API_DOMAIN + "/user/sign-in", user);
