@@ -5,6 +5,7 @@ import React from "react";
 import axios from "axios";
 import BidsView from "../pages/bidsview";
 import Navbar from "../component/navbar";
+import Swal from "sweetalert2";
 
 
 function MyTender() {
@@ -20,7 +21,7 @@ function MyTender() {
   const [myTenders, setMyTenders] = React.useState([]);
   const [myBidTenders, setMyBidTenders] = React.useState([]);
 
-  async function fetchMyTenders() {
+  const fetchMyTenders = async () => {
     const { data } = await axios.get(
       process.env.REACT_APP_API_DOMAIN + "/tender/my",
       {
@@ -42,10 +43,41 @@ function MyTender() {
     );
     setMyBidTenders(data.data);
   };
+
+  const deleteTender = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axios.delete(
+            process.env.REACT_APP_API_DOMAIN + "/tender/" + id,
+            {
+              headers: {
+                "x-auth-token": localStorage.getItem("token"),
+              },
+            }
+          );
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          fetchMyTenders();
+        } catch (error) {
+          Swal.fire("Error!", "Something went wrong.", "error");
+        }
+      }
+    });
+  };
+
   React.useEffect(() => {
     fetchMyTenders();
     fetchMyBidTenders();
   }, []);
+
   return (
     <>
       {/*Start Header*/}
@@ -97,6 +129,7 @@ function MyTender() {
                   <th>CLICKS</th>
                   <th>Total Entries</th>
                   <th className="pl-6">View</th>
+                  <th className="pl-6">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -117,54 +150,17 @@ function MyTender() {
                         className="button is-ghost mt-0"
                       >
                         View Entry</button>
-
-                      {/* {modal && (
-                        <div className="modal is-active" onClick={toggleModal} data-aos="zoom-in">
-                          <div className="modal-background overlay-model"></div>
-                          <div className="modal-card">
-                            <header className="modal-card-head">
-                              <p className="modal-card-title " id="model-title">  PURCHASE OF LAB EQUIPMENTS FOR DEPT. OF ELECTRICAL, ELECTRONIC & TELECOMMUNICATION</p>
-                              <button className="delete" aria-label="close"></button>
-                            </header>
-                            <section className="modal-card-body">
-                              <div className="card-content">
-                                <div className="content">
-                                  <table className="table is-fullwidth" id="tender_detail_table">
-                                    <tbody>
-                                      <tr>
-                                        <td>Ref No</td>
-                                        <td><strong>ABCF45</strong></td>
-                                      </tr>
-                                      <tr>
-                                        <td>Applied By</td>
-                                        <td><strong>Dulaj Gamage</strong></td>
-                                      </tr>
-                                      <tr>
-                                        <td>Company Name</td>
-                                        <td><strong>MAS Holdings</strong>&emsp;<span className="fa fa-star checked">5</span></td>
-                                      </tr>
-                                      <tr>
-                                        <td>Expected Amount</td>
-                                        <td><strong> LKR. 100000.00</strong></td>
-                                      </tr>
-                                      <tr>
-                                        <td>Location</td>
-                                        <td><strong> {tender?.location}</strong></td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </section>
-                            <footer className="modal-card-foot">
-                              <button className="button is-success"><strong>Handover Tender</strong></button>
-                              <button className="button">Cancel</button>
-                            </footer>
-                          </div>
-                        </div>
-                      )} */}
                     </td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          deleteTender(tender.id);
+                        }}
+                        className="button is-ghost mt-0"
+                      >
+                        Delete</button>
 
+                      </td>
                   </tr>
                 ))}
                 {bidviewModal && (
