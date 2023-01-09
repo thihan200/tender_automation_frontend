@@ -41,26 +41,26 @@ function Home() {
                 <div className="tile is-ancestor">
                     <div className="tile is-parent" data-aos="fade-down">
                         <article className="tile is-child box has-background-success-light">
-                            <p className="title" id="title1">272433</p>
+                            <p className="title" id="title1">8</p>
                             <p className="subtitle" id="subtitle1">All Tenders</p>
                         </article>
                     </div>
                     <div className="tile is-parent" data-aos="fade-down">
                         <article className="tile is-child box has-background-warning-light">
-                            <p className="title" id="title2">726</p>
+                            <p className="title" id="title2">4</p>
                             <p className="subtitle" id="subtitle2">Live Tenders</p>
                         </article>
                     </div>
                     <div className="tile is-parent" data-aos="fade-down">
                         <article className="tile is-child box has-background-link-light">
-                            <p className="title" id="title3">1963</p>
+                            <p className="title" id="title3">4</p>
                             <p className="subtitle" id="subtitle3">Departments</p>
                         </article>
                     </div>
                     <div className="tile is-parent" data-aos="fade-down">
                         <article className="tile is-child box has-background-danger-light">
-                            <p className="title" id="title4">593</p>
-                            <p className="subtitle" id="subtitle4">Suppliers</p>
+                            <p className="title" id="title4">5</p>
+                            <p className="subtitle" id="subtitle4">Users</p>
                         </article>
                     </div>
                 </div>
@@ -75,12 +75,12 @@ function Home() {
                         <div className="card" >
                             <header className="card-header">
                                 <p className="card-header-title">
-                                    PURCHASE OF LAB EQUIPMENTS FOR DEPT. OF ELECTRICAL, ELECTRONIC & TELECOMMUNICATION
+                                    PURCHASE OF ELECTRONIC EQUIPMENTS FOR DEPT. OF AGRICULTURE
                                 </p>
                             </header>
                             <div className="card-content">
                                 <div className="content">
-                                    <p id="card_category">Electrical and Electronic</p>
+                                    <p id="card_category">IT and Electronics</p>
                                     <div className="icon-text">
                                         <span className="icon has-text-black">
                                             <i className="fa-solid fa-location-dot"></i>
@@ -103,7 +103,7 @@ function Home() {
                         <div className="card">
                             <header className="card-header">
                                 <p className="card-header-title">
-                                    REPAIR OF DESCKTOP MACHINE AT KDU CARE-KDU/PRO/RP&SERVICE/137/2022
+                                    REPAIR OF DESCKTOP MACHINE AT KDU
                                 </p>
                             </header>
                             <div className="card-content">
@@ -131,7 +131,7 @@ function Home() {
                         <div className="card">
                             <header className="card-header">
                                 <p className="card-header-title">
-                                    PURCHASE OF LAB TOOLS FOR FOT-KDU/PRO/CAP/153/2022
+                                    PURCHASE OF LAB TOOLS FOR FOT-KDU
                                 </p>
                             </header>
                             <div className="card-content">
@@ -159,7 +159,7 @@ function Home() {
                         <div className="card">
                             <header className="card-header">
                                 <p className="card-header-title">
-                                    Boat Service Between Jetty at Lakvijaya Power Plant & Coal Vessels at Puttalam
+                                    Boat Service Between Jetty at Puttalam
                                 </p>
                             </header>
                             <div className="card-content">
@@ -169,7 +169,7 @@ function Home() {
                                         <span className="icon has-text-black">
                                             <i className="fa-solid fa-location-dot"></i>
                                         </span>
-                                        <span>Western Province</span>
+                                        <span>North Central Province</span>
                                     </div>
                                     <p><strong>Tender Value</strong>: N/A</p>
 

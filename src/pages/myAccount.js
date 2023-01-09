@@ -161,7 +161,7 @@ function MyAccount() {
               <div className="field">
                 <label className="label">Password</label>
                 <p className="control has-icons-left has-icons-right">
-                  <input className="input" type="password" placeholder="Password" />
+                  <input className="input" type="password" placeholder="Password" value="123456789"/>
                   <span className="icon is-small is-left">
                     <i className="fas fa-lock"></i>
                   </span>
@@ -173,7 +173,7 @@ function MyAccount() {
               <div className="field">
                 <label className="label">Confirm Password</label>
                 <p className="control has-icons-left has-icons-right">
-                  <input className="input" type="password" placeholder="Password" />
+                  <input className="input" type="password" placeholder="Password" value="123456789"/>
                   <span className="icon is-small is-left">
                     <i className="fas fa-lock"></i>
                   </span>

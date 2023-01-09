@@ -145,9 +145,8 @@ function Tender() {
                     <div className="column pl-5">
                         <div className="tabs is-medium">
                             <ul>
-                                <li onClick={(e) => toggleTab(1)} className={toggleState===1 ? "is-active":""} ><a>Live(7)</a></li>
-                                <li onClick={(e) => toggleTab(2)} className={toggleState===2 ? "is-active":""} ><a>Expired(24)</a></li>
-                                <li onClick={(e) => toggleTab(3)} className={toggleState===3 ? "is-active":""} ><a>All(145)</a></li>
+                                <li onClick={(e) => toggleTab(1)} className={toggleState===1 ? "is-active":""} ><a>All(8)</a></li>
+
                             </ul>
                             <Link to="/create-tender">
                                 <button className="button is-medium has-text-white has-text-weight-bold is-success" >Post

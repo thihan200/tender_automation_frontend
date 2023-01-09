@@ -139,7 +139,7 @@ function MyTender() {
                       <Link to={`/tender/${tender.id}`}> {tender.title}</Link>
                     </td>
                     <td className="pl-6">0</td>
-                    <td className="pl-6">0</td>
+                    <td className="pl-6">{tender.bidcount}</td>
                     <td className="pl-6"> {tender.bidcount}</td>
                     <td>
                       <button
